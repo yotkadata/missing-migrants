@@ -80,15 +80,8 @@
     <svg {width} {height}>
       <AxisX {xScale} height={innerHeight} />
       <Legend {yScale} {colorMapping} />
-      <Thresholds {xScale} height={innerHeight} />
-      <Chart
-        {xScale}
-        {yScale}
-        {radiusScale}
-        {colorMapping}
-        {data}
-        width={innerWidth}
-      />
+      <Thresholds {xScale} />
+      <Chart {xScale} {yScale} {radiusScale} {colorMapping} {data} />
     </svg>
   </div>
 </main>
