@@ -21,11 +21,10 @@
 <g class="thresholds">
   {#each thresholds as threshold}
     <g class="threshold" transform="translate({xScale(threshold.date)}, 0)">
-      <text class="number" x="3" y="12"
-        >{formatNumber(threshold.threshold)}</text
+      <text class="number" x="3" y="0">{formatNumber(threshold.threshold)}</text
       >
-      <text class="date" x="3" y="27">{formatDate(threshold.date)}</text>
-      <line x1="0" x2="0" y1="0" y2="40" stroke="#fff" />
+      <text class="date" x="3" y="15">{formatDate(threshold.date)}</text>
+      <line x1="0" x2="0" y1="-12" y2="25" stroke="#fff" />
     </g>
   {/each}
 </g>
