@@ -37,9 +37,9 @@
 
   $: margin = {
     top: 0,
-    right: 100,
+    right: 170,
     bottom: 25,
-    left: 25,
+    left: 40,
   };
 
   let width = 700;
@@ -78,10 +78,12 @@
 
   <div class="chart-container" bind:clientWidth={width}>
     <svg {width} {height}>
-      <AxisX {xScale} height={innerHeight} />
-      <Legend {yScale} {colorMapping} />
-      <Thresholds {xScale} />
-      <Chart {xScale} {yScale} {radiusScale} {colorMapping} {data} />
+      <g class="inner-chart" transform="translate({margin.left}, {margin.top})">
+        <AxisX {xScale} height={innerHeight} />
+        <Legend {xScale} {yScale} {colorMapping} {maxDate} />
+        <Thresholds {xScale} />
+        <Chart {xScale} {yScale} {radiusScale} {colorMapping} {data} />
+      </g>
     </svg>
   </div>
 </main>

@@ -40,7 +40,7 @@
   });
 </script>
 
-<g class="inner-chart">
+<g class="circles">
   {#each nodes as node}
     <circle
       cx={node.x}
