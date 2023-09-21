@@ -10,6 +10,7 @@
   import AxisX from "$components/AxisX.svelte";
   import Chart from "$components/Chart.svelte";
   import Legend from "$components/Legend.svelte";
+  import Thresholds from "$components/Thresholds.svelte";
 
   import { scaleBand, scaleSqrt, scaleTime } from "d3-scale";
   import { extent, min, max } from "d3-array";
@@ -79,6 +80,7 @@
     <svg {width} {height}>
       <AxisX {xScale} height={innerHeight} />
       <Legend {yScale} {colorMapping} />
+      <Thresholds {xScale} height={innerHeight} />
       <Chart
         {xScale}
         {yScale}
