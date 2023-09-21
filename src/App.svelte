@@ -126,15 +126,4 @@
   div.source strong {
     font-weight: 800;
   }
-  :global(.tick text) {
-    font-size: 0.8rem;
-    fill: hsla(212, 10%, 53%, 1);
-    font-weight: 400;
-  }
-  :global(.axis-title) {
-    font-size: 12px;
-    font-weight: 400;
-    fill: hsla(212, 10%, 53%, 1);
-    user-select: none; /* Prevents text from being selected */
-  }
 </style>

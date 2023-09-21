@@ -24,3 +24,11 @@
     </g>
   {/each}
 </g>
+
+<style>
+  .tick text {
+    font-size: 0.8rem;
+    fill: rgba(255, 255, 255, 0.8);
+    font-weight: 400;
+  }
+</style>
