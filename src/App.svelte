@@ -36,8 +36,8 @@
   };
 
   $: margin = {
-    top: 0,
-    right: 170,
+    top: 30,
+    right: 180,
     bottom: 25,
     left: 40,
   };
@@ -74,7 +74,11 @@
 </script>
 
 <main>
-  <h1>Missing Migrants 2014-2023</h1>
+  <h1>Almost 60,000 migrants died or went missing since 2014</h1>
+  <h2>
+    The <strong>Missing Migrants Project</strong> of the International Organisation
+    for Migration (IOM) has documented migrants who died or went missing during migration.
+  </h2>
 
   <div class="chart-container" bind:clientWidth={width}>
     <svg {width} {height}>
@@ -93,12 +97,12 @@
     background-color: #333;
     color: #f8f8f8;
     font-family: Lato, sans-serif;
+    padding: 1rem;
   }
   h1 {
     font-size: 2rem;
-    padding: 10px 0 20px 0;
+    padding: 0 0 10px 0;
     font-weight: 800;
-    text-align: center;
   }
   :global(.tick text) {
     font-size: 0.8rem;
