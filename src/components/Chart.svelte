@@ -30,7 +30,7 @@
           .strength(1)
       )
       .alpha(1)
-      .alphaDecay(0.1);
+      .alphaDecay(0.06);
   }
 
   let nodes = [];
