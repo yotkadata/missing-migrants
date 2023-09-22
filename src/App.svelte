@@ -84,7 +84,13 @@
     <svg {width} {height}>
       <g class="inner-chart" transform="translate({margin.left}, {margin.top})">
         <AxisX {xScale} height={innerHeight} />
-        <Legend {xScale} {yScale} {colorMapping} {maxDate} />
+        <Legend
+          {yScale}
+          {radiusScale}
+          {colorMapping}
+          width={innerWidth}
+          height={innerHeight}
+        />
         <Thresholds {xScale} />
         <Chart {xScale} {yScale} {radiusScale} {colorMapping} {data} />
       </g>
