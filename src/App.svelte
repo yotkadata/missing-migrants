@@ -61,11 +61,13 @@
   const minDate = min(data.map((d) => d.date));
   minDate.setMonth(0);
   minDate.setDate(1);
+  minDate.setHours(0, 0, 0, 0);
 
   // // Get max date set to Dec 31 of the year
   const maxDate = max(data.map((d) => d.date));
   maxDate.setMonth(11);
   maxDate.setDate(31);
+  minDate.setHours(0, 0, 0, 0);
 
   $: xScale = scaleTime().domain([minDate, maxDate]).range([0, innerWidth]);
 
