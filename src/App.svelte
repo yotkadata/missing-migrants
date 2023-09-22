@@ -37,7 +37,7 @@
   };
 
   $: margin = {
-    top: 30,
+    top: 50,
     right: 180,
     bottom: 25,
     left: 40,
@@ -85,6 +85,7 @@
 
   <div class="chart-container" bind:clientWidth={width}>
     <svg {width} {height}>
+      <Thresholds {xScale} />
       <g class="inner-chart" transform="translate({margin.left}, {margin.top})">
         <AxisX {xScale} height={innerHeight} />
         <Legend
@@ -94,7 +95,6 @@
           width={innerWidth}
           height={innerHeight}
         />
-        <Thresholds {xScale} />
         <Chart {xScale} {yScale} {radiusScale} {colorMapping} {data} />
       </g>
     </svg>
