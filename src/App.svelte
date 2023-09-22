@@ -33,13 +33,12 @@
     "Western Asia": "hsla(268, 17%, 70%, 1)",
     "Central Asia": "hsla(268, 17%, 80%, 1)",
     "Eastern Asia": "hsla(268, 17%, 90%, 1)",
-    Other: "rgba(0, 0, 0, 0.5)",
   };
 
   $: margin = {
-    top: 50,
+    top: 100,
     right: 180,
-    bottom: 25,
+    bottom: 10,
     left: 40,
   };
 
@@ -55,7 +54,7 @@
   $: yScale = scaleBand()
     .domain(Object.keys(colorMapping))
     .range([0, innerHeight])
-    .paddingOuter(2);
+    .paddingOuter(0);
 
   // Get min date and set to Jan 1 of the year
   const minDate = min(data.map((d) => d.date));

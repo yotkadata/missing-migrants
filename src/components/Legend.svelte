@@ -21,7 +21,7 @@
 
 <g
   class="legend-bubble"
-  transform="translate({width + radiusScale(1000) + 20}, {height})"
+  transform="translate({width + radiusScale(1000) + 20}, -25)"
 >
   {#each bubbleLegend as bubble}
     <g class="bubble bubble-{bubble}">
