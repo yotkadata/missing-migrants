@@ -36,10 +36,10 @@
   };
 
   $: margin = {
-    top: 100,
+    top: 110,
     right: 180,
     bottom: 10,
-    left: 40,
+    left: 10,
   };
 
   let width = 700;
@@ -76,10 +76,15 @@
 </script>
 
 <main>
-  <h1>Almost 60,000 migrants died or went missing since 2014</h1>
+  <h1>At least 58,444 migrants went missing since 2014</h1>
   <h2>
-    The <strong>Missing Migrants Project</strong> of the International Organisation
-    for Migration (IOM) has documented migrants who died or went missing during migration.
+    The Missing Migrants Project of the International Organization for Migration
+    (IOM) has documented 58,444 cases of people who died or went missing during
+    migration. The actual number is likely much higher. Each circle in this
+    graph represents an incident where at least one migrant died or went
+    missing. The circle's size indicates the number of people affected. Color
+    and vertical position denote the region of occurrence. Incidents are
+    arranged by date from left to right.
   </h2>
 
   <div class="chart-container" bind:clientWidth={width}>
@@ -109,8 +114,12 @@
     padding: 1rem;
   }
   h1 {
-    font-size: 2rem;
-    padding: 0 0 10px 0;
+    font-size: 3rem;
     font-weight: 800;
+    margin: 0 0 1rem 0;
+  }
+  h2 {
+    font-size: 1.2rem;
+    margin: 1rem 0;
   }
 </style>
