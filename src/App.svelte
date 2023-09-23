@@ -20,10 +20,10 @@
   import { extent, min, max } from "d3-array";
 
   const colorMapping = {
-    "North America": "hsla(181, 88%, 80%, 1)",
-    "Central America": "hsla(181, 88%, 60%, 1)",
-    Caribbean: "hsla(181, 88%, 40%, 1)",
-    "South America": "hsla(181, 88%, 31%, 1)",
+    "North America": "hsla(181, 88%, 35%, 1)",
+    "Central America": "hsla(181, 88%, 50%, 1)",
+    Caribbean: "hsla(181, 88%, 65%, 1)",
+    "South America": "hsla(181, 88%, 80%, 1)",
     Mediterranean: "hsla(5, 81%, 50%, 1)",
     Europe: "hsla(5, 81%, 38%, 1)",
     "Northern Africa": "hsla(39, 100%, 47%, 1)",
