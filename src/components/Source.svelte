@@ -2,7 +2,7 @@
   <p>
     <strong>Graph:</strong> Jan Kühn,
     <a href="https://yotka.org">https://yotka.org</a> <strong>Data:</strong>
-    <a href="https://missingmigrants.iom.int/">Missing Migrants Project</a>
+    <a href="https://missingmigrants.iom.int/">IOM Missing Migrants Project</a>
     <strong>License:</strong>
     <a href="http://creativecommons.org/licenses/by/4.0/">CC by-sa-nd 4.0</a>
   </p>
@@ -12,6 +12,7 @@
   div.source {
     font-size: 0.8rem;
     padding-top: 1rem;
+    text-align: right;
   }
   div.source a,
   div.source a:visited {
