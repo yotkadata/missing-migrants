@@ -4,6 +4,7 @@
   export let yScale;
   export let radiusScale;
   export let colorMapping;
+  export let chartReady;
 
   import { forceSimulation, forceY, forceX, forceCollide } from "d3-force";
 
@@ -30,23 +31,36 @@
           .strength(1)
       )
       .alpha(1)
-      .alphaDecay(0.05);
+      .alphaDecay(0.05)
+      .on("tick", () => {
+        // Don't show animation, just show final result
+        if (simulation.alpha() <= simulation.alphaMin()) {
+          simulation.stop();
+          chartReady = true;
+        }
+      })
+      .restart();
   }
-
-  let nodes = [];
-
-  simulation.on("tick", () => {
-    nodes = simulation.nodes();
-  });
 </script>
 
-<g class="circles">
-  {#each nodes as node}
-    <circle
-      cx={node.x}
-      cy={node.y}
-      r={radiusScale(node.value)}
-      fill={colorMapping[node.group]}
-    />
-  {/each}
-</g>
+{#if chartReady}
+  <g class="circles">
+    {#each data as node}
+      <circle
+        cx={node.x}
+        cy={node.y}
+        r={radiusScale(node.value)}
+        fill={colorMapping[node.group]}
+      />
+    {/each}
+  </g>
+{:else}
+  <g
+    class="calculating"
+    transform="translate({xScale(new Date('2018-06-01'))}, {yScale(
+      'Northern Africa'
+    )})"
+  >
+    <text fill="#fff" text-anchor="middle">Calculating positions ...</text>
+  </g>
+{/if}

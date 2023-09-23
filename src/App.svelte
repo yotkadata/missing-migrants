@@ -1,11 +1,12 @@
 <script>
-  import data from "$data/data-migration-incidents.json";
+  import dataRaw from "$data/data-migration-incidents.json";
   //import data from "$data/data-migration-individual.json";
 
   // Convert date strings to Date objects
-  data.forEach((d) => {
+  dataRaw.forEach((d) => {
     d.date = new Date(d.date);
   });
+  let data = dataRaw;
 
   import AxisX from "$components/AxisX.svelte";
   import Chart from "$components/Chart.svelte";
@@ -34,6 +35,8 @@
     "Central Asia": "hsla(268, 17%, 80%, 1)",
     "Eastern Asia": "hsla(268, 17%, 90%, 1)",
   };
+
+  let chartReady = false;
 
   $: margin = {
     top: 110,
@@ -99,7 +102,14 @@
           width={innerWidth}
           height={innerHeight}
         />
-        <Chart {xScale} {yScale} {radiusScale} {colorMapping} {data} />
+        <Chart
+          {xScale}
+          {yScale}
+          {radiusScale}
+          {colorMapping}
+          bind:data
+          bind:chartReady
+        />
       </g>
     </svg>
   </div>
