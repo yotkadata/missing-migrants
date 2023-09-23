@@ -25,19 +25,6 @@
       .filter((group) => group !== "Total")
       .map((group) => totals[group].pct)
   );
-
-  // A computed value for the width
-  let rectWidth = 0; // Default to 0 if any value is invalid
-
-  if (
-    typeof legendWidth === "number" &&
-    totals[group] &&
-    typeof totals[group].pct === "number" &&
-    typeof maxTotal === "number" &&
-    maxTotal !== 0
-  ) {
-    wirectWidthdth = legendWidth * (totals[group].pct / maxTotal);
-  }
 </script>
 
 <g class="legend" bind:this={gElement}>
@@ -47,7 +34,17 @@
         class="legend-item"
         transform="translate({width + 20}, {yScale(group)})"
       >
-        <rect width={rectWidth} height="2" fill={colorMapping[group]} />
+        <rect
+          width={typeof legendWidth === "number" &&
+          totals[group] &&
+          typeof totals[group].pct === "number" &&
+          typeof maxTotal === "number" &&
+          maxTotal !== 0
+            ? legendWidth * (totals[group].pct / maxTotal)
+            : 0}
+          height="2"
+          fill={colorMapping[group]}
+        />
         <text y="18" fill={colorMapping[group]}>{group}</text>
       </g>
     {/if}
