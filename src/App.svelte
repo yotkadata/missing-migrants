@@ -8,6 +8,7 @@
   });
   let data = dataRaw;
 
+  import Annotations from "$components/Annotations.svelte";
   import AxisX from "$components/AxisX.svelte";
   import Chart from "$components/Chart.svelte";
   import Legend from "$components/Legend.svelte";
@@ -111,6 +112,9 @@
           bind:chartReady
         />
       </g>
+      {#if chartReady}
+        <Annotations {xScale} {yScale} {data} />
+      {/if}
     </svg>
   </div>
   <Source />
