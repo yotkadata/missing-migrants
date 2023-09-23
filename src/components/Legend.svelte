@@ -4,6 +4,7 @@
   export let colorMapping;
   export let width;
   export let totals;
+  export let formatNumber;
 
   import { onMount } from "svelte";
 
@@ -63,7 +64,7 @@
         text-anchor="end"
         dominant-baseline="hanging"
       >
-        {bubble}
+        {formatNumber(bubble)}
       </text>
     </g>
   {/each}

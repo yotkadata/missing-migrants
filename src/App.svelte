@@ -18,6 +18,7 @@
 
   import { scaleBand, scaleSqrt, scaleTime } from "d3-scale";
   import { extent, min, max } from "d3-array";
+  import { timeFormat } from "d3";
 
   const colorMapping = {
     "North America": "hsla(181, 88%, 35%, 1)",
@@ -78,23 +79,33 @@
   $: radiusScale = scaleSqrt()
     .domain(extent(data, (d) => d.value))
     .range([minRadius, maxRadius]);
+
+  // Function to format numbers
+  const formatNumber = new Intl.NumberFormat("en-US", {
+    style: "decimal",
+  }).format;
+
+  // Function to format dates
+  const formatDate = timeFormat("%b %Y");
 </script>
 
 <main>
-  <h1>At least 58,444 migrants went missing since 2014</h1>
+  <h1>
+    At least {formatNumber(totals["Total"].value)} migrants went missing since 2014
+  </h1>
   <h2>
     The Missing Migrants Project of the International Organization for Migration
-    (IOM) has documented 58,444 cases of people who died or went missing during
-    migration. The actual number is likely much higher. Each circle in this
-    graph represents an incident where at least one migrant died or went
-    missing. The circle's size indicates the number of people affected. Color
-    and vertical position denote the region of occurrence. Incidents are
-    arranged by date from left to right.
+    (IOM) has documented {formatNumber(totals["Total"].value)} cases of people who
+    died or went missing during migration. The actual number is likely much higher.
+    Each circle in this graph represents an incident where at least one migrant died
+    or went missing. The circle's size indicates the number of people affected. Color
+    and vertical position denote the region of occurrence. Incidents are arranged
+    by date from left to right.
   </h2>
 
   <div class="chart-container" bind:clientWidth={width}>
     <svg {width} {height}>
-      <Thresholds {xScale} />
+      <Thresholds {xScale} {formatNumber} {formatDate} />
       <g class="inner-chart" transform="translate({margin.left}, {margin.top})">
         <AxisX {xScale} height={innerHeight} />
         <Legend
@@ -102,8 +113,8 @@
           {radiusScale}
           {colorMapping}
           width={innerWidth}
-          height={innerHeight}
           {totals}
+          {formatNumber}
         />
         <Chart
           {xScale}
@@ -115,7 +126,7 @@
         />
       </g>
       {#if chartReady}
-        <Annotations {xScale} {yScale} {data} />
+        <Annotations {xScale} {yScale} {data} {totals} {formatNumber} />
       {/if}
     </svg>
   </div>

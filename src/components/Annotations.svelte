@@ -2,6 +2,8 @@
   export let xScale;
   export let yScale;
   export let data;
+  export let totals;
+  export let formatNumber;
 
   import { annotation, annotationCalloutElbow } from "d3-svg-annotation";
   import { select } from "d3-selection";
@@ -34,8 +36,7 @@
       {
         note: {
           title: "Deadliest region",
-          label:
-            "Most people (28,073) died or went missing in the Mediterranean due to numerous large incidents.",
+          label: `Most people (${totals["Mediterranean"].value}) died or went missing in the Mediterranean due to numerous large incidents.`,
           wrap: 200,
           align: "left",
         },

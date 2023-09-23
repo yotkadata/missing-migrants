@@ -1,21 +1,14 @@
 <script>
   export let xScale;
+  export let formatNumber;
+  export let formatDate;
 
   import thresholds from "$data/data-migration-thresholds.json";
-  import { timeFormat } from "d3";
 
   // Convert date strings to Date objects
   thresholds.forEach((d) => {
     d.date = new Date(d.date);
   });
-
-  // Function to format numbers
-  const formatNumber = new Intl.NumberFormat("en-US", {
-    style: "decimal",
-  }).format;
-
-  // Function to format dates
-  const formatDate = timeFormat("%b %Y");
 </script>
 
 <g class="thresholds">
