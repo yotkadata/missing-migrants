@@ -36,7 +36,9 @@
       {
         note: {
           title: "Deadliest region",
-          label: `Most people (${totals["Mediterranean"].value}) died or went missing in the Mediterranean due to numerous large incidents.`,
+          label: `Most people (${formatNumber(
+            totals["Mediterranean"].value
+          )}) died or went missing in the Mediterranean due to numerous large incidents.`,
           wrap: 200,
           align: "left",
         },
