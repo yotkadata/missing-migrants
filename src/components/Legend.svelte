@@ -3,17 +3,42 @@
   export let radiusScale;
   export let colorMapping;
   export let width;
-  export let height;
+  export let totals;
+
+  import { onMount } from "svelte";
 
   const groups = Object.keys(colorMapping);
   const bubbleLegend = [1000, 500, 100];
+
+  // Get width of legend to calculate width of rects
+  let gElement;
+  let legendWidth;
+
+  onMount(() => {
+    legendWidth = gElement.getBBox().width;
+  });
+
+  // Calculate highest pct of totals excluding "Total"
+  const maxTotal = Math.max(
+    ...Object.keys(totals)
+      .filter((group) => group !== "Total")
+      .map((group) => totals[group].pct)
+  );
 </script>
 
-<g class="legend">
+<g class="legend" bind:this={gElement}>
   {#each groups as group}
     {#if group !== "Other"}
-      <g class="legend-item" transform="translate(0, {yScale(group)})">
-        <text x={width + 20} y="5" fill={colorMapping[group]}>{group}</text>
+      <g
+        class="legend-item"
+        transform="translate({width + 20}, {yScale(group)})"
+      >
+        <rect
+          width={legendWidth * (totals[group].pct / maxTotal)}
+          height="2"
+          fill={colorMapping[group]}
+        />
+        <text y="18" fill={colorMapping[group]}>{group}</text>
       </g>
     {/if}
   {/each}

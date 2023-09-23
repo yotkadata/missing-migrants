@@ -39,9 +39,9 @@
           wrap: 200,
           align: "left",
         },
-        x: xScale(new Date("2022-01-01")),
+        x: xScale(new Date("2023-12-31")) + 20,
         y: yScale("Mediterranean"),
-        dx: 60,
+        dx: -220,
         dy: 150,
       },
     ].map(function (d) {
