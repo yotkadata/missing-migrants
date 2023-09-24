@@ -5,6 +5,7 @@
   export let radiusScale;
   export let colorMapping;
   export let chartReady;
+  export let circleHovered;
 
   import { forceSimulation, forceY, forceX, forceCollide } from "d3-force";
 
@@ -51,6 +52,15 @@
         cy={node.y}
         r={radiusScale(node.value)}
         fill={colorMapping[node.group]}
+        on:mouseover={() => {
+          circleHovered = node;
+        }}
+        on:focus={() => {
+          circleHovered = node;
+        }}
+        on:mouseleave={() => {
+          circleHovered = null;
+        }}
       />
     {/each}
   </g>

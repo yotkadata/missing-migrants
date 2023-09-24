@@ -15,6 +15,7 @@
   import Legend from "$components/Legend.svelte";
   import Source from "$components/Source.svelte";
   import Thresholds from "$components/Thresholds.svelte";
+  import Tooltip from "$components/Tooltip.svelte";
 
   import { scaleBand, scaleSqrt, scaleTime } from "d3-scale";
   import { extent, min, max } from "d3-array";
@@ -87,6 +88,9 @@
 
   // Function to format dates
   const formatDate = timeFormat("%b %Y");
+
+  let showAnnotations = true;
+  let circleHovered;
 </script>
 
 <main>
@@ -103,7 +107,19 @@
     by date from left to right.
   </h2>
 
-  <div class="chart-container" bind:clientWidth={width}>
+  <div
+    class="chart-container"
+    bind:clientWidth={width}
+    on:mouseover={() => {
+      showAnnotations = false;
+    }}
+    on:focus={() => {
+      showAnnotations = false;
+    }}
+    on:mouseleave={() => {
+      showAnnotations = true;
+    }}
+  >
     <svg {width} {height}>
       <Thresholds {xScale} {formatNumber} {formatDate} />
       <g class="inner-chart" transform="translate({margin.left}, {margin.top})">
@@ -123,12 +139,30 @@
           {colorMapping}
           bind:data
           bind:chartReady
+          bind:circleHovered
         />
       </g>
       {#if chartReady}
-        <Annotations {xScale} {yScale} {data} {totals} {formatNumber} />
+        <Annotations
+          {xScale}
+          {yScale}
+          {data}
+          {totals}
+          {formatNumber}
+          {showAnnotations}
+        />
       {/if}
     </svg>
+    {#if circleHovered}
+      <Tooltip
+        data={circleHovered}
+        width={innerWidth}
+        {margin}
+        {radiusScale}
+        {formatNumber}
+        {colorMapping}
+      />
+    {/if}
   </div>
   <Source />
 </main>
