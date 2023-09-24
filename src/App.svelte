@@ -50,7 +50,8 @@
   };
 
   let width = 700;
-  $: height = 700;
+  // Using 910 to get a max height of 1080px including title etc.
+  $: height = (width / 16) * 9 <= 910 ? (width / 16) * 9 : 910;
 
   const maxRadius = 30;
   const minRadius = 1;
@@ -172,6 +173,8 @@
     background-color: #333;
     color: #f8f8f8;
     font-family: Lato, sans-serif;
+    margin: 0 auto;
+    max-width: 1920px;
     padding: 1rem;
   }
   h1 {
