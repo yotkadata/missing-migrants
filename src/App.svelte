@@ -64,17 +64,23 @@
     .range([0, innerHeight])
     .paddingOuter(0);
 
-  // Get min date and set to Jan 1 of the year
-  const minDate = min(data.map((d) => d.date));
+  // Get min date and set to Jan 1 of the year for xScale domain
+  const originalMinDate = min(data.map((d) => d.date));
+  // Create a copy of the min date
+  const minDate = new Date(originalMinDate);
+  // Set the copy to Jan 1 of the year
   minDate.setMonth(0);
   minDate.setDate(1);
   minDate.setHours(0, 0, 0, 0);
 
-  // // Get max date set to Dec 31 of the year
-  const maxDate = max(data.map((d) => d.date));
+  // Get max date set to Dec 31 of the year for xScale domain
+  const originalMaxDate = max(data.map((d) => d.date));
+  // Create a copy of the max date
+  const maxDate = new Date(originalMaxDate);
+  // Set the copy to Dec 31 of the year
   maxDate.setMonth(11);
   maxDate.setDate(31);
-  minDate.setHours(0, 0, 0, 0);
+  maxDate.setHours(0, 0, 0, 0);
 
   $: xScale = scaleTime().domain([minDate, maxDate]).range([0, innerWidth]);
 
