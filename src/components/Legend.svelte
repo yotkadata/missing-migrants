@@ -5,6 +5,7 @@
   export let width;
   export let totals;
   export let formatNumber;
+  export let legendHovered;
 
   import { onMount } from "svelte";
 
@@ -33,6 +34,15 @@
       <g
         class="legend-item"
         transform="translate({width + 20}, {yScale(group)})"
+        on:mouseover={() => {
+          legendHovered = group;
+        }}
+        on:focus={() => {
+          legendHovered = group;
+        }}
+        on:mouseleave={() => {
+          legendHovered = null;
+        }}
       >
         <rect
           width={typeof legendWidth === "number" &&
@@ -77,6 +87,9 @@
 </g>
 
 <style>
+  .legend-item {
+    font-size: 1.1rem;
+  }
   .legend-bubble circle {
     fill: none;
     stroke: rgba(255, 255, 255, 0.5);

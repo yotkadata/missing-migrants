@@ -17,7 +17,7 @@
       <text class="number" x="3" y="0" dominant-baseline="hanging"
         >{formatNumber(threshold.threshold)}</text
       >
-      <text class="date" x="3" y="15" dominant-baseline="hanging"
+      <text class="date" x="3" y="18" dominant-baseline="hanging"
         >{formatDate(threshold.date)}</text
       >
       <line x1="0" x2="0" y1="0" y2="60" stroke="#fff" />
@@ -31,7 +31,7 @@
   }
   .thresholds .number {
     fill: rgba(255, 255, 255, 0.8);
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
   }
   .thresholds .date {

@@ -53,7 +53,7 @@
   // Using 910 to get a max height of 1080px including title etc.
   $: height = (width / 16) * 9 <= 910 ? (width / 16) * 9 : 910;
 
-  const maxRadius = 30;
+  const maxRadius = 40;
   const minRadius = 1;
 
   $: innerWidth = width - margin.left - margin.right;
@@ -181,7 +181,7 @@
     font-family: Lato, sans-serif;
     margin: 0 auto;
     max-width: 1920px;
-    padding: 1rem;
+    padding: 2rem 1rem 1rem 2rem;
   }
   h1 {
     font-size: 3rem;
@@ -189,7 +189,7 @@
     margin: 0 0 1rem 0;
   }
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin: 1rem 0;
   }
 </style>

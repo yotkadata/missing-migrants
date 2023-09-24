@@ -5,11 +5,9 @@
   export let totals;
   export let formatNumber;
   export let showAnnotations;
-  $: console.log("showAnnotations:", showAnnotations);
 
   import { annotation, annotationCalloutElbow } from "d3-svg-annotation";
   import { select } from "d3-selection";
-  import { onMount } from "svelte";
 
   const getCoords = (d, id) => {
     // From d, get element with id
@@ -27,12 +25,13 @@
         title: "Deadliest incident",
         label: "18 April 2015: 1,022 dead or missing",
         wrap: 150,
-        align: "left",
+        align: "right",
       },
       x: getCoords(data, "2015.MMP00108")["x"],
       y: getCoords(data, "2015.MMP00108")["y"],
-      dx: -150,
-      dy: 110,
+      dx:
+        xScale(new Date("2015-01-01")) - getCoords(data, "2015.MMP00108")["x"],
+      dy: yScale("Western Africa") - getCoords(data, "2015.MMP00108")["y"] + 20,
     },
     {
       note: {
@@ -41,12 +40,12 @@
           totals["Mediterranean"].value
         )}) died or went missing in the Mediterranean due to numerous large incidents.`,
         wrap: 200,
-        align: "left",
+        align: "right",
       },
       x: xScale(new Date("2023-12-31")) + 20,
       y: yScale("Mediterranean"),
-      dx: -220,
-      dy: 150,
+      dx: -60,
+      dy: yScale("Middle Africa") - yScale("Mediterranean") - 20,
     },
   ].map(function (d) {
     d.color = "#fff";
@@ -74,5 +73,8 @@
   :global(rect.annotation-note-bg) {
     fill: #333;
     fill-opacity: 0.5;
+  }
+  :global(.annotation-note) {
+    font-size: 1.1rem;
   }
 </style>
