@@ -59,9 +59,6 @@
         on:focus={() => {
           circleHovered = node;
         }}
-        on:mouseleave={() => {
-          circleHovered = null;
-        }}
       />
     {/each}
   </g>

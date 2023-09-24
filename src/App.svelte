@@ -135,6 +135,7 @@
     }}
     on:mouseleave={() => {
       showAnnotations = true;
+      circleHovered = null;
     }}
   >
     <svg {width} {height}>
