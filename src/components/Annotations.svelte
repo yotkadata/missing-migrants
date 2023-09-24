@@ -4,6 +4,8 @@
   export let data;
   export let totals;
   export let formatNumber;
+  export let showAnnotations;
+  $: console.log("showAnnotations:", showAnnotations);
 
   import { annotation, annotationCalloutElbow } from "d3-svg-annotation";
   import { select } from "d3-selection";
@@ -19,48 +21,53 @@
     return { x, y };
   };
 
-  onMount(() => {
-    const annotations = [
-      {
-        note: {
-          title: "Deadliest incident",
-          label: "18 April 2015: 1,022 dead or missing",
-          wrap: 150,
-          align: "left",
-        },
-        x: getCoords(data, "2015.MMP00108")["x"],
-        y: getCoords(data, "2015.MMP00108")["y"],
-        dx: -150,
-        dy: 110,
+  const annotations = [
+    {
+      note: {
+        title: "Deadliest incident",
+        label: "18 April 2015: 1,022 dead or missing",
+        wrap: 150,
+        align: "left",
       },
-      {
-        note: {
-          title: "Deadliest region",
-          label: `Most people (${formatNumber(
-            totals["Mediterranean"].value
-          )}) died or went missing in the Mediterranean due to numerous large incidents.`,
-          wrap: 200,
-          align: "left",
-        },
-        x: xScale(new Date("2023-12-31")) + 20,
-        y: yScale("Mediterranean"),
-        dx: -220,
-        dy: 150,
+      x: getCoords(data, "2015.MMP00108")["x"],
+      y: getCoords(data, "2015.MMP00108")["y"],
+      dx: -150,
+      dy: 110,
+    },
+    {
+      note: {
+        title: "Deadliest region",
+        label: `Most people (${formatNumber(
+          totals["Mediterranean"].value
+        )}) died or went missing in the Mediterranean due to numerous large incidents.`,
+        wrap: 200,
+        align: "left",
       },
-    ].map(function (d) {
-      d.color = "#fff";
-      return d;
-    });
-
-    const makeAnnotations = annotation()
-      .type(annotationCalloutElbow)
-      .annotations(annotations);
-
-    select(".inner-chart")
-      .append("g")
-      .attr("class", "annotation-group")
-      .call(makeAnnotations);
+      x: xScale(new Date("2023-12-31")) + 20,
+      y: yScale("Mediterranean"),
+      dx: -220,
+      dy: 150,
+    },
+  ].map(function (d) {
+    d.color = "#fff";
+    return d;
   });
+  $: {
+    // Before appending the annotations, remove any existing ones
+    const chart = select(".inner-chart");
+    chart.selectAll(".annotation-group").remove();
+
+    if (showAnnotations) {
+      const makeAnnotations = annotation()
+        .type(annotationCalloutElbow)
+        .annotations(annotations);
+
+      select(".inner-chart")
+        .append("g")
+        .attr("class", "annotation-group")
+        .call(makeAnnotations);
+    }
+  }
 </script>
 
 <style>
