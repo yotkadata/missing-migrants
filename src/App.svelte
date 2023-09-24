@@ -49,9 +49,19 @@
     left: 10,
   };
 
-  let width = 700;
-  // Using 910 to get a max height of 1080px including title etc.
-  $: height = (width / 16) * 9 <= 910 ? (width / 16) * 9 : 910;
+  let viewportWidth = window.innerWidth;
+  let viewportHeight = window.innerHeight;
+  let aspectRatio = 16 / 9;
+
+  // Set width to viewport width, but not more than 1920px
+  let width = viewportWidth <= 1920 ? viewportWidth : 1920;
+
+  // Set height according to aspect ratio, but not more than viewport height
+  // Parts outside the SVG are ~230px. Calculate height based on that.
+  $: height =
+    width / aspectRatio + 240 <= viewportHeight
+      ? width / aspectRatio
+      : viewportHeight - 240;
 
   const maxRadius = 40;
   const minRadius = 1;
