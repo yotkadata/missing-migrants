@@ -42,38 +42,44 @@
 
   let chartReady = false;
 
+  // Function to calculate values based on viewport width
+  const calcVw = (value) => {
+    return value * (viewportWidth / 2560);
+  };
+
   $: margin = {
-    top: 110,
-    right: 180,
-    bottom: 10,
-    left: 10,
+    top: calcVw(150),
+    right: calcVw(200),
+    bottom: calcVw(10),
+    left: calcVw(10),
   };
 
   let viewportWidth = window.innerWidth;
   let viewportHeight = window.innerHeight;
   let aspectRatio = 16 / 9;
+  let notSvgHeight = 0.08984375 * viewportWidth; /* 230 at 2560 */
   let height;
 
   // Set width to viewport width, but not more than 1920px
-  let width = Math.min(viewportWidth, 1920);
+  let width = viewportWidth; // Math.min(viewportWidth, 1920);
 
   // Calculate the expected height based on the width and aspect ratio
   let expectedHeight = width / aspectRatio;
 
   // Calculate total height including elements outside SVG
-  let totalHeight = expectedHeight + 230;
+  let totalHeight = expectedHeight + notSvgHeight;
 
   // Check if the total height exceeds the viewport height
   if (totalHeight > viewportHeight) {
     // Adjust width and height based on the viewport height and aspect ratio
-    height = viewportHeight - 230;
+    height = viewportHeight - notSvgHeight;
     width = height * aspectRatio;
   } else {
     height = expectedHeight;
   }
 
-  const maxRadius = 40;
-  const minRadius = 1;
+  const maxRadius = calcVw(50);
+  const minRadius = calcVw(1);
 
   $: innerWidth = width - margin.left - margin.right;
   $: innerHeight = height - margin.top - margin.bottom;
@@ -113,27 +119,32 @@
   }).format;
 
   // Function to format dates
-  const formatDate = timeFormat("%b %Y");
+  const formatMonth = timeFormat("%b %Y");
+  const formatDate = timeFormat("%e %b %Y");
 
   let showAnnotations = true;
   let circleHovered;
 </script>
 
 <main>
-  <h1>
-    At least {formatNumber(totals["Total"].value)} migrants went missing since 2014
-  </h1>
-  <h2>
-    The Missing Migrants Project of the International Organization for Migration
-    (IOM) has documented {formatNumber(totals["Total"].value)} cases of people who
-    died or went missing during migration. The actual number is likely much higher.
-    Each circle in this graph represents an incident where at least one migrant died
-    or went missing. The circle's size indicates the number of people affected. Color
-    and vertical position denote the region of occurrence. Incidents are arranged
-    by date from left to right.
-  </h2>
-  <!-- If viewport width is larger than 1200px, show interactive version -->
-  {#if viewportWidth >= 1200}
+  <!-- If viewport width is larger than 1000px, show interactive version -->
+  {#if viewportWidth >= 1000}
+    <h1>
+      At least {formatNumber(totals["Total"].value)} migrants went missing since
+      2014
+    </h1>
+    <h2>
+      The Missing Migrants Project of the International Organization for
+      Migration (IOM) has documented {formatNumber(totals["Total"].value)} cases
+      of people who died or went missing during migration (as of {formatDate(
+        originalMaxDate
+      )}). The actual number is likely much higher. Each circle in this graph
+      represents an incident where at least one migrant died or went missing.
+      The circle's size indicates the number of people affected. Color and
+      vertical position denote the region of occurrence. Incidents are arranged
+      by date from left to right.
+    </h2>
+
     <div
       class="chart-container"
       bind:clientWidth={width}
@@ -149,7 +160,7 @@
       }}
     >
       <svg {width} {height}>
-        <Thresholds {xScale} {formatNumber} {formatDate} />
+        <Thresholds {xScale} {formatNumber} {formatMonth} {calcVw} />
         <g
           class="inner-chart"
           transform="translate({margin.left}, {margin.top})"
@@ -162,6 +173,7 @@
             width={innerWidth}
             {totals}
             {formatNumber}
+            {calcVw}
           />
           <Chart
             {xScale}
@@ -181,6 +193,7 @@
             {totals}
             {formatNumber}
             {showAnnotations}
+            {calcVw}
           />
         {/if}
       </svg>
@@ -197,16 +210,17 @@
     </div>
     <Source />
   {:else}
-    <!-- If viewport width is smaller than 1200px, show static version -->
+    <!-- If viewport width is smaller than 1000px, show static version -->
     <div class="static">
       <img
-        src="public/static-graph-missing-migrants.png"
+        src="static-graph-missing-migrants.png"
         alt="Missing Migrants Graph"
         class="responsive-image"
       />
       <p>
         The <strong>interactive version</strong> of the graph is currently only available
-        on large screens.
+        on large screens. Please visit this page on a desktop computer or a tablet
+        in landscape mode.
       </p>
     </div>
   {/if}
@@ -218,17 +232,16 @@
     color: #f8f8f8;
     font-family: Lato, sans-serif;
     margin: 0 auto;
-    max-width: 1920px;
-    padding: 2rem 1rem 1rem 2rem;
+    padding: 1.25vw 0.625vw 0.625vw 1.25vw;
   }
   h1 {
-    font-size: 3rem;
+    font-size: 1.875vw; /* 3rem = 48px at 2560 */
     font-weight: 800;
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.625vw 0; /* 1rem = 16px at 2560 */
   }
   h2 {
-    font-size: 1.4rem;
-    margin: 1rem 0;
+    font-size: 0.8593vw; /* 1.4rem = 22.4px at 2560 */
+    margin: 0.625vw 0; /* 1rem = 16px at 2560 */
   }
   .responsive-image {
     width: 100%; /* Make the image expand to the width of its container */
@@ -237,6 +250,6 @@
     max-width: 100%; /* Ensure it doesn't scale beyond its original size */
   }
   .static p {
-    margin: 1rem 0;
+    margin: 0.625vw 0;
   }
 </style>

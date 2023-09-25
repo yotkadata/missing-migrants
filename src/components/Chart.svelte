@@ -72,3 +72,10 @@
     <text fill="#fff" text-anchor="middle">Calculating positions ...</text>
   </g>
 {/if}
+
+<style>
+  .calculating text {
+    font-size: 0.703125vw; /* 18px at 2560 */
+    font-weight: 700;
+  }
+</style>

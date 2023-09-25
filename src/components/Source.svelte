@@ -10,8 +10,8 @@
 
 <style>
   div.source {
-    font-size: 0.8rem;
-    padding-top: 1rem;
+    font-size: 0.546875vw; /* 14px at 2560 */
+    padding-top: 0.625vw;
     text-align: right;
   }
   div.source a,

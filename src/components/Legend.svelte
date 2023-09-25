@@ -5,6 +5,7 @@
   export let width;
   export let totals;
   export let formatNumber;
+  export let calcVw;
 
   import { onMount } from "svelte";
 
@@ -32,7 +33,7 @@
     {#if group !== "Other"}
       <g
         class="legend-item"
-        transform="translate({width + 20}, {yScale(group)})"
+        transform="translate({width + calcVw(20)}, {yScale(group)})"
       >
         <rect
           width={typeof legendWidth === "number" &&
@@ -42,10 +43,10 @@
           maxTotal !== 0
             ? legendWidth * (totals[group].pct / maxTotal)
             : 0}
-          height="2"
+          height={calcVw(4)}
           fill={colorMapping[group]}
         />
-        <text y="18" fill={colorMapping[group]}>{group}</text>
+        <text y={calcVw(22)} fill={colorMapping[group]}>{group}</text>
       </g>
     {/if}
   {/each}
@@ -53,20 +54,20 @@
 
 <g
   class="legend-bubble"
-  transform="translate({width + radiusScale(1000) + 20}, -25)"
+  transform="translate({width + radiusScale(1000) + calcVw(20)}, {calcVw(-25)})"
 >
   {#each bubbleLegend as bubble}
     <g class="bubble bubble-{bubble}">
       <circle cy={-radiusScale(bubble)} r={radiusScale(bubble)} />
       <line
         x1="0"
-        x2={radiusScale(1000) + 50}
+        x2={radiusScale(1000) + calcVw(50)}
         y1={-2 * radiusScale(bubble)}
         y2={-2 * radiusScale(bubble)}
       />
       <text
-        x={radiusScale(1000) + 50}
-        y={-2 * radiusScale(bubble) + 4}
+        x={radiusScale(1000) + calcVw(50)}
+        y={-2 * radiusScale(bubble) + calcVw(4)}
         text-anchor="end"
         dominant-baseline="hanging"
       >
@@ -78,14 +79,14 @@
 
 <style>
   .legend-item {
-    font-size: 1.1rem;
+    font-size: 0.703125vw; /* 18px at 2560 */
   }
   .legend-bubble circle {
     fill: none;
     stroke: rgba(255, 255, 255, 0.5);
   }
   .legend-bubble text {
-    font-size: 0.8rem;
+    font-size: 0.546875vw; /* 14px at 2560 */
     fill: rgba(255, 255, 255, 0.5);
   }
   .legend-bubble line {

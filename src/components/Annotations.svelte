@@ -5,6 +5,7 @@
   export let totals;
   export let formatNumber;
   export let showAnnotations;
+  export let calcVw;
 
   import { annotation, annotationCalloutElbow } from "d3-svg-annotation";
   import { select } from "d3-selection";
@@ -24,14 +25,17 @@
       note: {
         title: "Deadliest incident",
         label: "18 April 2015: 1,022 dead or missing",
-        wrap: 150,
+        wrap: calcVw(150),
         align: "right",
       },
       x: getCoords(data, "2015.MMP00108")["x"],
       y: getCoords(data, "2015.MMP00108")["y"],
       dx:
         xScale(new Date("2015-01-01")) - getCoords(data, "2015.MMP00108")["x"],
-      dy: yScale("Western Africa") - getCoords(data, "2015.MMP00108")["y"] + 20,
+      dy:
+        yScale("Western Africa") -
+        getCoords(data, "2015.MMP00108")["y"] +
+        calcVw(20),
     },
     {
       note: {
@@ -39,13 +43,13 @@
         label: `Most people (${formatNumber(
           totals["Mediterranean"].value
         )}) died or went missing in the Mediterranean due to numerous large incidents.`,
-        wrap: 200,
+        wrap: calcVw(200),
         align: "right",
       },
-      x: xScale(new Date("2023-12-31")) + 20,
+      x: xScale(new Date("2023-12-31")) + calcVw(20),
       y: yScale("Mediterranean"),
-      dx: -60,
-      dy: yScale("Middle Africa") - yScale("Mediterranean") - 20,
+      dx: calcVw(-60),
+      dy: yScale("Middle Africa") - yScale("Mediterranean") - calcVw(20),
     },
   ].map(function (d) {
     d.color = "#fff";
@@ -75,6 +79,6 @@
     fill-opacity: 0.5;
   }
   :global(.annotation-note) {
-    font-size: 1.1rem;
+    font-size: 0.703125vw; /* 18px at 2560 */
   }
 </style>

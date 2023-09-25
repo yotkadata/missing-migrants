@@ -108,37 +108,37 @@
   .tooltip {
     background-color: #fff;
     box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.15);
-    padding: 8px 6px;
+    padding: 0.3125vw 0.234375vw; /* 8px/6px at 2560 */
     border-radius: 5%;
     align-items: center;
     transition: top 300ms ease, left 300ms ease;
     z-index: 10;
-    max-width: 300px;
+    max-width: 11.71875vw; /* 300px at 2560 */
     word-wrap: break-word;
   }
   .text {
     color: #000;
   }
   .text p {
-    margin: 0.5rem 0;
+    font-size: 0.546875vw; /* 14px at 2560 */
+    margin: 0.3125vw 0; /* 8px at 2560 */
   }
   .text p.region {
     color: #fff;
-    font-size: 0.8em;
     font-weight: 800;
-    padding: 4px;
+    padding: 0.15625vw; /* 4px at 2560 */
     text-transform: uppercase;
   }
   .text strong {
     font-weight: 600;
   }
   .text p.number-missing {
-    font-size: 2rem;
+    font-size: 1.25vw; /* 32px at 2560 */
     font-weight: 800;
-    margin-top: 1rem;
+    margin-top: 0.625vw; /* 16px at 2560 */
   }
   .text p.text-missing {
-    margin-bottom: 1rem;
+    margin-bottom: 0.625vw; /* 16px at 2560 */
   }
   .text a,
   .text a:visited {
