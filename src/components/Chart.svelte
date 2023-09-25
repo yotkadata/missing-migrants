@@ -32,7 +32,7 @@
           .strength(1)
       )
       .alpha(1)
-      .alphaDecay(0.05)
+      .alphaDecay(0.2)
       .on("tick", () => {
         // Don't show animation, just show final result
         if (simulation.alpha() <= simulation.alphaMin()) {
@@ -40,6 +40,10 @@
           chartReady = true;
         }
       })
+      // .on("end", () => {
+      //   chartReady = true;
+      //   console.log(JSON.stringify(data));
+      // })
       .restart();
   }
 </script>
