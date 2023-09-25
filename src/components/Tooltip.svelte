@@ -30,12 +30,14 @@
   let links = [];
 
   $: {
-    sources = data.source.split(",");
-    urls = data.url.split(" ");
+    if (data.url && data.source) {
+      sources = data.source.split(",");
+      urls = data.url.split(" ");
 
-    links.length = 0; // Reset links
-    for (let i = 0; i < Math.min(sources.length, urls.length); i++) {
-      links.push({ text: sources[i].trim(), href: urls[i].trim() });
+      links.length = 0; // Reset links
+      for (let i = 0; i < Math.min(sources.length, urls.length); i++) {
+        links.push({ text: sources[i].trim(), href: urls[i].trim() });
+      }
     }
   }
 
@@ -111,7 +113,7 @@
     align-items: center;
     transition: top 300ms ease, left 300ms ease;
     z-index: 10;
-    max-width: 300px; /* for example, adjust as needed */
+    max-width: 300px;
     word-wrap: break-word;
   }
   .text {
