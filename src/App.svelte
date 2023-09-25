@@ -52,16 +52,25 @@
   let viewportWidth = window.innerWidth;
   let viewportHeight = window.innerHeight;
   let aspectRatio = 16 / 9;
+  let height;
 
   // Set width to viewport width, but not more than 1920px
-  let width = viewportWidth <= 1920 ? viewportWidth : 1920;
+  let width = Math.min(viewportWidth, 1920);
 
-  // Set height according to aspect ratio, but not more than viewport height
-  // Parts outside the SVG are ~230px. Calculate height based on that.
-  $: height =
-    width / aspectRatio + 240 <= viewportHeight
-      ? width / aspectRatio
-      : viewportHeight - 240;
+  // Calculate the expected height based on the width and aspect ratio
+  let expectedHeight = width / aspectRatio;
+
+  // Calculate total height including elements outside SVG
+  let totalHeight = expectedHeight + 230;
+
+  // Check if the total height exceeds the viewport height
+  if (totalHeight > viewportHeight) {
+    // Adjust width and height based on the viewport height and aspect ratio
+    height = viewportHeight - 230;
+    width = height * aspectRatio;
+  } else {
+    height = expectedHeight;
+  }
 
   const maxRadius = 40;
   const minRadius = 1;
@@ -123,66 +132,84 @@
     and vertical position denote the region of occurrence. Incidents are arranged
     by date from left to right.
   </h2>
-
-  <div
-    class="chart-container"
-    bind:clientWidth={width}
-    on:mouseover={() => {
-      showAnnotations = false;
-    }}
-    on:focus={() => {
-      showAnnotations = false;
-    }}
-    on:mouseleave={() => {
-      showAnnotations = true;
-      circleHovered = null;
-    }}
-  >
-    <svg {width} {height}>
-      <Thresholds {xScale} {formatNumber} {formatDate} />
-      <g class="inner-chart" transform="translate({margin.left}, {margin.top})">
-        <AxisX {xScale} height={innerHeight} />
-        <Legend
-          {yScale}
-          {radiusScale}
-          {colorMapping}
+  <!-- If viewport width is larger than 1200px, show interactive version -->
+  {#if viewportWidth >= 1200}
+    <div
+      class="chart-container"
+      bind:clientWidth={width}
+      on:mouseover={() => {
+        showAnnotations = false;
+      }}
+      on:focus={() => {
+        showAnnotations = false;
+      }}
+      on:mouseleave={() => {
+        showAnnotations = true;
+        circleHovered = null;
+      }}
+    >
+      <svg {width} {height}>
+        <Thresholds {xScale} {formatNumber} {formatDate} />
+        <g
+          class="inner-chart"
+          transform="translate({margin.left}, {margin.top})"
+        >
+          <AxisX {xScale} height={innerHeight} />
+          <Legend
+            {yScale}
+            {radiusScale}
+            {colorMapping}
+            width={innerWidth}
+            {totals}
+            {formatNumber}
+          />
+          <Chart
+            {xScale}
+            {yScale}
+            {radiusScale}
+            {colorMapping}
+            bind:data
+            bind:chartReady
+            bind:circleHovered
+          />
+        </g>
+        {#if chartReady}
+          <Annotations
+            {xScale}
+            {yScale}
+            {data}
+            {totals}
+            {formatNumber}
+            {showAnnotations}
+          />
+        {/if}
+      </svg>
+      {#if circleHovered}
+        <Tooltip
+          data={circleHovered}
           width={innerWidth}
-          {totals}
-          {formatNumber}
-        />
-        <Chart
-          {xScale}
-          {yScale}
+          {margin}
           {radiusScale}
-          {colorMapping}
-          bind:data
-          bind:chartReady
-          bind:circleHovered
-        />
-      </g>
-      {#if chartReady}
-        <Annotations
-          {xScale}
-          {yScale}
-          {data}
-          {totals}
           {formatNumber}
-          {showAnnotations}
+          {colorMapping}
         />
       {/if}
-    </svg>
-    {#if circleHovered}
-      <Tooltip
-        data={circleHovered}
-        width={innerWidth}
-        {margin}
-        {radiusScale}
-        {formatNumber}
-        {colorMapping}
+    </div>
+    <Source />
+  {:else}
+    <!-- If viewport width is smaller than 1200px, show static version -->
+    <div class="static">
+      <img
+        src="public/static-graph-missing-migrants.png"
+        alt="Missing Migrants Graph"
+        class="responsive-image"
       />
-    {/if}
-  </div>
-  <Source />
+      <p>
+        The <strong>interactive version</strong> of the graph is currently only available
+        on large screens.
+      </p>
+    </div>
+  {/if}
 </main>
 
 <style>
@@ -201,6 +228,15 @@
   }
   h2 {
     font-size: 1.4rem;
+    margin: 1rem 0;
+  }
+  .responsive-image {
+    width: 100%; /* Make the image expand to the width of its container */
+    height: auto; /* Maintain the image's aspect ratio */
+    display: block; /* Remove any margins or spacing */
+    max-width: 100%; /* Ensure it doesn't scale beyond its original size */
+  }
+  .static p {
     margin: 1rem 0;
   }
 </style>
