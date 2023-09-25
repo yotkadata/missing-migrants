@@ -27,7 +27,7 @@
 
 <style>
   .tick text {
-    font-size: 0.546875vw; /* 14px at 2560 */
+    font-size: 0.78125vw; /* 20px at 2560 */
     fill: rgba(255, 255, 255, 0.8);
     font-weight: 400;
   }

@@ -120,7 +120,7 @@
     color: #000;
   }
   .text p {
-    font-size: 0.546875vw; /* 14px at 2560 */
+    font-size: 0.78125vw; /* 20px at 2560 */
     margin: 0.3125vw 0; /* 8px at 2560 */
   }
   .text p.region {

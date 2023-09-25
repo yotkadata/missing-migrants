@@ -57,11 +57,11 @@
   let viewportWidth = window.innerWidth;
   let viewportHeight = window.innerHeight;
   let aspectRatio = 16 / 9;
-  let notSvgHeight = 0.08984375 * viewportWidth; /* 230 at 2560 */
+  let notSvgHeight = calcVw(270); /* 270 at 2560 */
   let height;
 
-  // Set width to viewport width, but not more than 1920px
-  let width = viewportWidth; // Math.min(viewportWidth, 1920);
+  // Set width to viewport width
+  let width = viewportWidth;
 
   // Calculate the expected height based on the width and aspect ratio
   let expectedHeight = width / aspectRatio;
@@ -235,13 +235,13 @@
     padding: 1.25vw 0.625vw 0.625vw 1.25vw;
   }
   h1 {
-    font-size: 1.875vw; /* 3rem = 48px at 2560 */
+    font-size: 2.5vw; /* 64px at 2560 */
     font-weight: 800;
-    margin: 0 0 0.625vw 0; /* 1rem = 16px at 2560 */
+    margin: 0 0 0.625vw 0; /* 16px at 2560 */
   }
   h2 {
-    font-size: 0.8593vw; /* 1.4rem = 22.4px at 2560 */
-    margin: 0.625vw 0; /* 1rem = 16px at 2560 */
+    font-size: 1.25vw; /* 32px at 2560 */
+    margin: 0.625vw 0; /* 16px at 2560 */
   }
   .responsive-image {
     width: 100%; /* Make the image expand to the width of its container */

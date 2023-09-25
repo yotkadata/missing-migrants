@@ -79,7 +79,7 @@
 
 <style>
   .legend-item {
-    font-size: 0.703125vw; /* 18px at 2560 */
+    font-size: 0.78125vw; /* 20px at 2560 */
   }
   .legend-bubble circle {
     fill: none;

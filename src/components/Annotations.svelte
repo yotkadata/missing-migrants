@@ -25,7 +25,7 @@
       note: {
         title: "Deadliest incident",
         label: "18 April 2015: 1,022 dead or missing",
-        wrap: calcVw(150),
+        wrap: calcVw(200),
         align: "right",
       },
       x: getCoords(data, "2015.MMP00108")["x"],
@@ -43,7 +43,7 @@
         label: `Most people (${formatNumber(
           totals["Mediterranean"].value
         )}) died or went missing in the Mediterranean due to numerous large incidents.`,
-        wrap: calcVw(200),
+        wrap: calcVw(240),
         align: "right",
       },
       x: xScale(new Date("2023-12-31")) + calcVw(20),
@@ -76,9 +76,9 @@
 <style>
   :global(rect.annotation-note-bg) {
     fill: #333;
-    fill-opacity: 0.5;
+    fill-opacity: 0.7;
   }
   :global(.annotation-note) {
-    font-size: 0.703125vw; /* 18px at 2560 */
+    font-size: 0.78125vw; /* 20px at 2560 */
   }
 </style>

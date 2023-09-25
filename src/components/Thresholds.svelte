@@ -38,11 +38,11 @@
   }
   .thresholds .number {
     fill: rgba(255, 255, 255, 0.8);
-    font-size: 0.703125vw; /* 1.1rem = 18px at 2560 */
+    font-size: 0.78125vw; /* 20px at 2560 */
     font-weight: 700;
   }
   .thresholds .date {
     fill: rgba(255, 255, 255, 0.3);
-    font-size: 0.546875vw; /* 14px at 2560 */
+    font-size: 0.625vw; /* 16px at 2560 */
   }
 </style>
