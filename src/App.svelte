@@ -15,6 +15,7 @@
   import Source from "$components/Source.svelte";
   import Thresholds from "$components/Thresholds.svelte";
   import Tooltip from "$components/Tooltip.svelte";
+  import TooltipLegend from "$components/TooltipLegend.svelte";
 
   import { scaleBand, scaleSqrt, scaleTime } from "d3-scale";
   import { extent, min, max } from "d3-array";
@@ -117,12 +118,20 @@
     style: "decimal",
   }).format;
 
+  // Function to format percentages
+  const formatPct = new Intl.NumberFormat("en-US", {
+    style: "percent",
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1,
+  }).format;
+
   // Function to format dates
   const formatMonth = timeFormat("%b %Y");
   const formatDate = timeFormat("%e %b %Y");
 
   let showAnnotations = true;
   let circleHovered;
+  let legendHovered;
 </script>
 
 <main>
@@ -173,6 +182,7 @@
             {totals}
             {formatNumber}
             {calcVw}
+            bind:legendHovered
           />
           <Chart
             {xScale}
@@ -204,6 +214,20 @@
           {radiusScale}
           {formatNumber}
           {colorMapping}
+        />
+      {/if}
+      {#if legendHovered}
+        <TooltipLegend
+          data={legendHovered}
+          width={innerWidth}
+          height={innerHeight}
+          {margin}
+          {totals}
+          {formatNumber}
+          {formatPct}
+          {colorMapping}
+          bind:circleHovered
+          {yScale}
         />
       {/if}
     </div>

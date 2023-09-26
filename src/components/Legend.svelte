@@ -6,6 +6,8 @@
   export let totals;
   export let formatNumber;
   export let calcVw;
+  export let legendHovered;
+  export let circleHovered;
 
   import { onMount } from "svelte";
 
@@ -34,6 +36,17 @@
       <g
         class="legend-item"
         transform="translate({width + calcVw(20)}, {yScale(group)})"
+        on:mouseover={() => {
+          circleHovered = null;
+          legendHovered = group;
+        }}
+        on:focus={() => {
+          circleHovered = null;
+          legendHovered = group;
+        }}
+        on:mouseleave={() => {
+          legendHovered = null;
+        }}
       >
         <rect
           width={typeof legendWidth === "number" &&
