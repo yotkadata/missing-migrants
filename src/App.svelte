@@ -183,6 +183,7 @@
             {formatNumber}
             {calcVw}
             bind:legendHovered
+            bind:circleHovered
           />
           <Chart
             {xScale}
