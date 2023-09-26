@@ -1,6 +1,5 @@
 <script>
-  import dataRaw from "$data/data-migration-incidents-precomputed.json";
-  //import data from "$data/data-migration-individual.json";
+  import dataRaw from "$data/data-migration-incidents.json";
   import totals from "$data/data-migration-totals.json";
 
   // Convert date strings to Date objects
