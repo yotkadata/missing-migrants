@@ -51,7 +51,7 @@
 <style>
   .tooltip {
     background-color: #fff;
-    box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0 0.15625vw rgba(255, 255, 255, 0.5);
     padding: 0;
     border-radius: 5%;
     align-items: center;
@@ -63,6 +63,7 @@
   }
   .tooltip p {
     color: #000;
+    font-size: 0.78125vw; /* 20px at 2560 */
     padding: 0.15625vw 0.625vw; /* 4px 16px at 2560 */
   }
   .tooltip p.group {

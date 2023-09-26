@@ -210,6 +210,7 @@
         <Tooltip
           data={circleHovered}
           width={innerWidth}
+          height={innerHeight}
           {margin}
           {radiusScale}
           {formatNumber}

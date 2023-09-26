@@ -4,14 +4,15 @@
 
   export let data;
   export let width;
+  export let height;
   export let margin;
   export let radiusScale;
   export let formatNumber;
   export let colorMapping;
 
   let tooltipWidth;
+  let tooltipHeight;
 
-  let xOffset = 5;
   let yOffset = -20;
 
   $: xPosition =
@@ -19,7 +20,15 @@
       ? data.x - tooltipWidth
       : data.x + margin.left + radiusScale(data.value);
 
-  $: yPosition = data.y + margin.top - radiusScale(data.value) + yOffset;
+  let yPosition;
+  $: {
+    if (data.y + tooltipHeight > height) {
+      // Position the tooltip at the bottom
+      yPosition = height - tooltipHeight + margin.top;
+    } else {
+      yPosition = data.y + margin.top - radiusScale(data.value) + yOffset;
+    }
+  }
 
   // Function to format dates
   const formatDate = timeFormat("%e %b %Y");
@@ -57,6 +66,7 @@
   in:fly={{ y: 10, duration: 200, delay: 200 }}
   out:fade={{ duration: 600 }}
   bind:clientWidth={tooltipWidth}
+  bind:clientHeight={tooltipHeight}
 >
   <div class="text">
     <p class="region" style="background-color: {colorMapping[data.group]}">
@@ -107,8 +117,8 @@
 <style>
   .tooltip {
     background-color: #fff;
-    box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.15);
-    padding: 0.3125vw 0.234375vw; /* 8px/6px at 2560 */
+    box-shadow: 0 0 0.15625vw rgba(255, 255, 255, 0.5);
+    padding: 0;
     border-radius: 5%;
     align-items: center;
     transition: top 300ms ease, left 300ms ease;
@@ -116,17 +126,15 @@
     max-width: 11.71875vw; /* 300px at 2560 */
     word-wrap: break-word;
   }
-  .text {
-    color: #000;
-  }
   .text p {
+    color: #000;
     font-size: 0.78125vw; /* 20px at 2560 */
-    margin: 0.3125vw 0; /* 8px at 2560 */
+    padding: 0.15625vw 0.625vw; /* 4px 16px at 2560 */
   }
   .text p.region {
     color: #fff;
     font-weight: 800;
-    padding: 0.15625vw; /* 4px at 2560 */
+    padding: 0.625vw; /* 16px at 2560 */
     text-transform: uppercase;
   }
   .text strong {
@@ -138,6 +146,9 @@
     margin-top: 0.625vw; /* 16px at 2560 */
   }
   .text p.text-missing {
+    margin-bottom: 0.625vw; /* 16px at 2560 */
+  }
+  .text p.id {
     margin-bottom: 0.625vw; /* 16px at 2560 */
   }
   .text a,
