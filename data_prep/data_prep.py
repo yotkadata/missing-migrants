@@ -3,6 +3,8 @@ Python script to fetch data from the IOM website and
 preprocess it for use in the missing-migrants project.
 """
 
+from pathlib import Path
+
 import pandas as pd
 import requests
 from bs4 import BeautifulSoup
@@ -96,11 +98,47 @@ def export_totals_to_json(data: pd.DataFrame) -> None:
     # Sort by value in descending order and set index
     totals = totals.sort_values("value", ascending=False).set_index("group")
 
+    # Make sure data directory exists
+    Path("data").mkdir(parents=True, exist_ok=True)
+
     # Export data to json
-    json_file = "src/data/data-migration-totals.json"
+    json_file = "data/data-migration-totals.json"
     totals.to_json(json_file, orient="index")
 
     print(f"Data with totals by region exported to {json_file}")
+
+
+def export_thresholds_to_json(data: pd.DataFrame) -> None:
+    """
+    Function to export the thresholds to a JSON file.
+    """
+
+    # Resample "Total Number of Dead and Missing" by day
+    resampled = data.groupby("date")[["value"]].sum().resample("D").sum()
+
+    # Add cumulative sum column
+    resampled["cumsum"] = resampled.cumsum()
+
+    # Find dates where the cumulative sum meets thresholds
+    thresholds = {10000: "", 20000: "", 30000: "", 40000: "", 50000: ""}
+
+    for threshold in thresholds:
+        thresholds[threshold] = (
+            resampled[resampled["cumsum"] >= threshold].index[0].strftime("%Y-%m-%d")
+        )
+
+    # Convert to dataframe
+    thresholds = pd.DataFrame.from_dict(thresholds, orient="index").reset_index()
+    thresholds.columns = ["threshold", "date"]
+
+    # Make sure data directory exists
+    Path("data").mkdir(parents=True, exist_ok=True)
+
+    # Export data to json
+    json_file = "data/data-migration-thresholds.json"
+    thresholds.to_json(json_file, orient="records")
+
+    print(f"Data with thresholds exported to {json_file}")
 
 
 def export_data_to_json() -> None:
@@ -145,6 +183,9 @@ def export_data_to_json() -> None:
         # Export totals to json
         export_totals_to_json(data)
 
+        # Export thresholds to json
+        export_thresholds_to_json(data)
+
         # Drop rows without date
         data.dropna(subset=["date"], inplace=True)
 
@@ -152,8 +193,11 @@ def export_data_to_json() -> None:
             f"Removed {num_rows - data.shape[0]} rows without date, leaving {data.shape[0]} rows."
         )
 
+        # Make sure data directory exists
+        Path("data").mkdir(parents=True, exist_ok=True)
+
         # Export data to json
-        json_file = "src/data/data-migration-incidents.json"
+        json_file = "data/data-migration-incidents.json"
         data.to_json(json_file, date_format="iso", orient="records")
 
         print(f"Data exported to {json_file}")
