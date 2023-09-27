@@ -1,13 +1,5 @@
 <script>
-  import dataRaw from "$data/data-migration-incidents-precomputed.json";
-  import totals from "$data/data-migration-totals.json";
-
-  // Convert date strings to Date objects
-  dataRaw.forEach((d) => {
-    d.date = new Date(d.date);
-  });
-  let data = dataRaw;
-
+  // Component Imports
   import Annotations from "$components/Annotations.svelte";
   import AxisX from "$components/AxisX.svelte";
   import Chart from "$components/Chart.svelte";
@@ -17,10 +9,63 @@
   import Tooltip from "$components/Tooltip.svelte";
   import TooltipLegend from "$components/TooltipLegend.svelte";
 
+  // D3 and Svelte utilities
   import { scaleBand, scaleSqrt, scaleTime } from "d3-scale";
   import { extent, min, max } from "d3-array";
   import { timeFormat } from "d3-time-format";
+  import { onMount } from "svelte";
 
+  // Data-related variables
+  let data = [];
+  let totals = [];
+  let loading = true;
+  let minDate = new Date();
+  let maxDate = new Date();
+  let originalMinDate, originalMaxDate;
+  const dataIncidents = "/src/data/data-migration-incidents-precomputed.json";
+  const dataTotals = "/src/data/data-migration-totals.json";
+
+  onMount(async () => {
+    loadData();
+  });
+
+  async function loadData() {
+    try {
+      // Fetch migration incidents data
+      data = await fetchData(dataIncidents);
+      data.forEach((d) => {
+        d.date = new Date(d.date);
+      });
+
+      // Fetch migration totals data
+      totals = await fetchData(dataTotals);
+
+      loading = false;
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      loading = false;
+    }
+  }
+
+  async function fetchData(url) {
+    const response = await fetch(url);
+    return await response.json();
+  }
+
+  // Viewport and margin settings
+  let viewportWidth = window.innerWidth;
+  let viewportHeight = window.innerHeight;
+  let { width, height } = getChartDimensions(viewportWidth, viewportHeight);
+  $: margin = {
+    top: calcVw(150),
+    right: calcVw(200),
+    bottom: calcVw(10),
+    left: calcVw(10),
+  };
+  $: innerWidth = width - margin.left - margin.right;
+  $: innerHeight = height - margin.top - margin.bottom;
+
+  // Chart settings
   const colorMapping = {
     "North America": "hsla(181, 88%, 35%, 1)",
     "Central America": "hsla(181, 88%, 50%, 1)",
@@ -39,201 +84,173 @@
     "Central Asia": "hsla(268, 17%, 80%, 1)",
     "Eastern Asia": "hsla(268, 17%, 90%, 1)",
   };
-
-  let chartReady = false;
-
-  // Function to calculate values based on viewport width
-  const calcVw = (value) => {
-    return value * (viewportWidth / 2560);
-  };
-
-  $: margin = {
-    top: calcVw(150),
-    right: calcVw(200),
-    bottom: calcVw(10),
-    left: calcVw(10),
-  };
-
-  let viewportWidth = window.innerWidth;
-  let viewportHeight = window.innerHeight;
-  let aspectRatio = 16 / 9;
-  let notSvgHeight = calcVw(270); /* 270 at 2560 */
-  let height;
-
-  // Set width to viewport width
-  let width = viewportWidth;
-
-  // Calculate the expected height based on the width and aspect ratio
-  let expectedHeight = width / aspectRatio;
-
-  // Calculate total height including elements outside SVG
-  let totalHeight = expectedHeight + notSvgHeight;
-
-  // Check if the total height exceeds the viewport height
-  if (totalHeight > viewportHeight) {
-    // Adjust width and height based on the viewport height and aspect ratio
-    height = viewportHeight - notSvgHeight;
-    width = height * aspectRatio;
-  } else {
-    height = expectedHeight;
-  }
-
   const maxRadius = calcVw(50);
   const minRadius = calcVw(1);
+  let chartReady = false;
+  let showAnnotations = true;
+  let circleHovered;
+  let legendHovered;
 
-  $: innerWidth = width - margin.left - margin.right;
-  $: innerHeight = height - margin.top - margin.bottom;
-
+  // Scales
   $: yScale = scaleBand()
     .domain(Object.keys(colorMapping))
     .range([0, innerHeight])
     .paddingOuter(0);
-
-  // Get min date and set to Jan 1 of the year for xScale domain
-  const originalMinDate = min(data.map((d) => d.date));
-  // Create a copy of the min date
-  const minDate = new Date(originalMinDate);
-  // Set the copy to Jan 1 of the year
-  minDate.setMonth(0);
-  minDate.setDate(1);
-  minDate.setHours(0, 0, 0, 0);
-
-  // Get max date set to Dec 31 of the year for xScale domain
-  const originalMaxDate = max(data.map((d) => d.date));
-  // Create a copy of the max date
-  const maxDate = new Date(originalMaxDate);
-  // Set the copy to Dec 31 of the year
-  maxDate.setMonth(11);
-  maxDate.setDate(31);
-  maxDate.setHours(0, 0, 0, 0);
-
   $: xScale = scaleTime().domain([minDate, maxDate]).range([0, innerWidth]);
-
   $: radiusScale = scaleSqrt()
     .domain(extent(data, (d) => d.value))
     .range([minRadius, maxRadius]);
 
-  // Function to format numbers
+  $: if (!loading && data.length) {
+    originalMinDate = min(data.map((d) => d.date));
+    minDate = new Date(originalMinDate);
+    minDate.setMonth(0);
+    minDate.setDate(1);
+    minDate.setHours(0, 0, 0, 0);
+
+    originalMaxDate = max(data.map((d) => d.date));
+    maxDate = new Date(originalMaxDate);
+    maxDate.setMonth(11);
+    maxDate.setDate(31);
+    maxDate.setHours(0, 0, 0, 0);
+  }
+
+  // Formatters
   const formatNumber = new Intl.NumberFormat("en-US", {
     style: "decimal",
   }).format;
-
-  // Function to format percentages
   const formatPct = new Intl.NumberFormat("en-US", {
     style: "percent",
     minimumFractionDigits: 1,
     maximumFractionDigits: 1,
   }).format;
-
-  // Function to format dates
   const formatMonth = timeFormat("%b %Y");
   const formatDate = timeFormat("%e %b %Y");
 
-  let showAnnotations = true;
-  let circleHovered;
-  let legendHovered;
+  // Utility functions
+  function calcVw(value) {
+    return value * (viewportWidth / 2560);
+  }
+  function getChartDimensions(viewportWidth, viewportHeight) {
+    let aspectRatio = 16 / 9;
+    let notSvgHeight = calcVw(270);
+    let height;
+    let width = viewportWidth;
+    let expectedHeight = width / aspectRatio;
+    let totalHeight = expectedHeight + notSvgHeight;
+
+    if (totalHeight > viewportHeight) {
+      height = viewportHeight - notSvgHeight;
+      width = height * aspectRatio;
+    } else {
+      height = expectedHeight;
+    }
+    return { width, height };
+  }
 </script>
 
 <main>
   <!-- If viewport width is larger than 1000px, show interactive version -->
   {#if viewportWidth >= 1000}
-    <h1>
-      At least {formatNumber(totals["Total"].value)} migrants went missing since
-      2014
-    </h1>
-    <h2>
-      The Missing Migrants Project of the International Organization for
-      Migration (IOM) has documented {formatNumber(totals["Total"].value)} cases
-      of people who died or went missing during migration (as of {formatDate(
-        originalMaxDate
-      )}). The actual number is likely much higher. Each circle in this graph
-      represents an incident where at least one migrant died or went missing.
-      The circle's size indicates the number of people affected. Color and
-      vertical position denote the region of occurrence. Incidents are arranged
-      by date from left to right.
-    </h2>
+    {#if !loading && data.length}
+      <h1>
+        At least {formatNumber(totals["Total"].value)} migrants went missing since
+        2014
+      </h1>
+      <h2>
+        The Missing Migrants Project of the International Organization for
+        Migration (IOM) has documented {formatNumber(totals["Total"].value)} cases
+        of people who died or went missing during migration (as of {formatDate(
+          originalMaxDate
+        )}). The actual number is likely much higher. Each circle in this graph
+        represents an incident where at least one migrant died or went missing.
+        The circle's size indicates the number of people affected. Color and
+        vertical position denote the region of occurrence. Incidents are
+        arranged by date from left to right.
+      </h2>
 
-    <div
-      class="chart-container"
-      bind:clientWidth={width}
-      on:mouseover={() => {
-        showAnnotations = false;
-      }}
-      on:focus={() => {
-        showAnnotations = false;
-      }}
-      on:mouseleave={() => {
-        showAnnotations = true;
-        circleHovered = null;
-      }}
-    >
-      <svg {width} {height}>
-        <Thresholds {xScale} {formatNumber} {formatMonth} {calcVw} />
-        <g
-          class="inner-chart"
-          transform="translate({margin.left}, {margin.top})"
-        >
-          <AxisX {xScale} height={innerHeight} />
-          <Legend
-            {yScale}
-            {radiusScale}
-            {colorMapping}
+      <div
+        class="chart-container"
+        bind:clientWidth={width}
+        on:mouseover={() => {
+          showAnnotations = false;
+        }}
+        on:focus={() => {
+          showAnnotations = false;
+        }}
+        on:mouseleave={() => {
+          showAnnotations = true;
+          circleHovered = null;
+        }}
+      >
+        <svg {width} {height}>
+          <Thresholds {xScale} {formatNumber} {formatMonth} {calcVw} />
+          <g
+            class="inner-chart"
+            transform="translate({margin.left}, {margin.top})"
+          >
+            <AxisX {xScale} height={innerHeight} />
+            <Legend
+              {yScale}
+              {radiusScale}
+              {colorMapping}
+              width={innerWidth}
+              {totals}
+              {formatNumber}
+              {calcVw}
+              bind:legendHovered
+              bind:circleHovered
+            />
+            <Chart
+              {xScale}
+              {yScale}
+              {radiusScale}
+              {colorMapping}
+              bind:data
+              bind:chartReady
+              bind:circleHovered
+            />
+          </g>
+          {#if chartReady}
+            <Annotations
+              {xScale}
+              {yScale}
+              {data}
+              {totals}
+              {formatNumber}
+              {showAnnotations}
+              {calcVw}
+            />
+          {/if}
+        </svg>
+        {#if circleHovered}
+          <Tooltip
+            data={circleHovered}
             width={innerWidth}
-            {totals}
-            {formatNumber}
-            {calcVw}
-            bind:legendHovered
-            bind:circleHovered
-          />
-          <Chart
-            {xScale}
-            {yScale}
+            height={innerHeight}
+            {margin}
             {radiusScale}
-            {colorMapping}
-            bind:data
-            bind:chartReady
-            bind:circleHovered
-          />
-        </g>
-        {#if chartReady}
-          <Annotations
-            {xScale}
-            {yScale}
-            {data}
-            {totals}
             {formatNumber}
-            {showAnnotations}
-            {calcVw}
+            {colorMapping}
           />
         {/if}
-      </svg>
-      {#if circleHovered}
-        <Tooltip
-          data={circleHovered}
-          width={innerWidth}
-          height={innerHeight}
-          {margin}
-          {radiusScale}
-          {formatNumber}
-          {colorMapping}
-        />
-      {/if}
-      {#if legendHovered}
-        <TooltipLegend
-          data={legendHovered}
-          width={innerWidth}
-          height={innerHeight}
-          {margin}
-          {totals}
-          {formatNumber}
-          {formatPct}
-          {colorMapping}
-          bind:circleHovered
-          {yScale}
-        />
-      {/if}
-    </div>
-    <Source />
+        {#if legendHovered}
+          <TooltipLegend
+            data={legendHovered}
+            width={innerWidth}
+            height={innerHeight}
+            {margin}
+            {totals}
+            {formatNumber}
+            {formatPct}
+            {colorMapping}
+            bind:circleHovered
+            {yScale}
+          />
+        {/if}
+      </div>
+      <Source />
+    {/if}
   {:else}
     <!-- If viewport width is smaller than 1000px, show static version -->
     <div class="static">
