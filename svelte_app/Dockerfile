@@ -26,8 +26,11 @@ RUN npm run build
 # Use the official Nginx image
 FROM nginx:alpine
 
+# Set permissions for Nginx
+RUN chown -R nginx:nginx /usr/share/nginx/html/
+
 # Copy the built app from the builder stage and Nginx configuration (if any)
-COPY --from=builder /app/dist /usr/share/nginx/html
+COPY --from=builder /app/dist /usr/share/nginx/html/
 
 # Expose port 80
 EXPOSE 80
