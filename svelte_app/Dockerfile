@@ -14,7 +14,8 @@ RUN npm install
 
 # Copy the rest of the app files
 COPY src src/
-COPY public public/
+COPY public/favicon.ico public/
+COPY public/*.png public/
 COPY index.html ./
 COPY jsconfig.json ./
 
