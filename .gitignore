@@ -1,7 +1,6 @@
-README.md
-jsconfig.json
-node_modules/
-package-lock.json
-package.json
-src/data/data-migration-incidents_reduced.json
-vite.config.js
+data_prep/data/
+notebooks/
+svelte_app/dist/
+svelte_app/node_modules/
+svelte_app/package-lock.json
+svelte_app/src/data/data-migration-incidents_reduced.json
