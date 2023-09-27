@@ -4,7 +4,9 @@
     <a href="https://yotka.org">https://yotka.org</a> <strong>Data:</strong>
     <a href="https://missingmigrants.iom.int/">IOM Missing Migrants Project</a>
     <strong>License:</strong>
-    <a href="http://creativecommons.org/licenses/by/4.0/">CC by-sa-nd 4.0</a>
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/"
+      >CC by-nc-sa 4.0</a
+    >
   </p>
 </div>
 
