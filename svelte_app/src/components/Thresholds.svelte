@@ -3,13 +3,7 @@
   export let formatNumber;
   export let formatMonth;
   export let calcVw;
-
-  import thresholds from "$data/data-migration-thresholds.json";
-
-  // Convert date strings to Date objects
-  thresholds.forEach((d) => {
-    d.date = new Date(d.date);
-  });
+  export let thresholds;
 </script>
 
 <g class="thresholds">

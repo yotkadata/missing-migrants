@@ -18,12 +18,15 @@
   // Data-related variables
   let data = [];
   let totals = [];
+  let thresholds = [];
   let loading = true;
   let minDate = new Date();
   let maxDate = new Date();
   let originalMinDate, originalMaxDate;
-  const dataIncidents = "/src/data/data-migration-incidents-precomputed.json";
-  const dataTotals = "/src/data/data-migration-totals.json";
+
+  const dataIncidents = "/data/data-migration-incidents-precomputed.json";
+  const dataTotals = "/data/data-migration-totals.json";
+  const dataThresholds = "/data/data-migration-thresholds.json";
 
   onMount(async () => {
     loadData();
@@ -34,6 +37,12 @@
       // Fetch migration incidents data
       data = await fetchData(dataIncidents);
       data.forEach((d) => {
+        d.date = new Date(d.date);
+      });
+
+      // Fetch migration thresholds data
+      thresholds = await fetchData(dataThresholds);
+      thresholds.forEach((d) => {
         d.date = new Date(d.date);
       });
 
@@ -184,7 +193,13 @@
         }}
       >
         <svg {width} {height}>
-          <Thresholds {xScale} {formatNumber} {formatMonth} {calcVw} />
+          <Thresholds
+            {thresholds}
+            {xScale}
+            {formatNumber}
+            {formatMonth}
+            {calcVw}
+          />
           <g
             class="inner-chart"
             transform="translate({margin.left}, {margin.top})"
