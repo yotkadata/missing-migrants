@@ -12,5 +12,4 @@ export default defineConfig({
       $routes: path.resolve("./src/routes"),
     },
   },
-  base: "/missing-migrants/",
 });
