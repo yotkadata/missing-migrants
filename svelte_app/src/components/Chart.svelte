@@ -32,7 +32,7 @@
           .strength(1)
       )
       .alpha(1)
-      .alphaDecay(0.1) // 0.1 with precomputed positions, 0.05 without
+      .alphaDecay(0.05) // 0.1 with precomputed positions, 0.05 without
       .on("tick", () => {
         // Don't show animation, just show final result
         if (simulation.alpha() <= simulation.alphaMin()) {
