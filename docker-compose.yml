@@ -1,0 +1,16 @@
+version: "3"
+services:
+  data_prep:
+    build:
+      context: ./data_prep
+    volumes:
+      - data-volume:/usr/src/app/src/data
+  svelte_app:
+    build:
+      context: ./svelte_app
+    ports:
+      - "8080:80"
+    volumes:
+      - data-volume:/usr/share/nginx/html/src/data
+volumes:
+  data-volume:
