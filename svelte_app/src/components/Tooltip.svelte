@@ -1,6 +1,6 @@
 <script>
   import { fly, fade } from "svelte/transition";
-  import { timeFormat } from "d3";
+  import { timeFormat } from "d3-time-format";
 
   export let data;
   export let width;

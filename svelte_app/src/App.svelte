@@ -19,7 +19,7 @@
 
   import { scaleBand, scaleSqrt, scaleTime } from "d3-scale";
   import { extent, min, max } from "d3-array";
-  import { timeFormat } from "d3";
+  import { timeFormat } from "d3-time-format";
 
   const colorMapping = {
     "North America": "hsla(181, 88%, 35%, 1)",
