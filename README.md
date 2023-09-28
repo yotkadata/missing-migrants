@@ -18,3 +18,7 @@ The [Dataset](https://missingmigrants.iom.int/downloads) used for this project i
 
 Find an **interactive version** here: https://yotka.org/missing-migrants/
 (Disclaimer: it probably takes some time to load.)
+
+### Static version
+
+![static version](https://github.com/yotkadata/missing-migrants/raw/main/svelte_app/public/static-graph-missing-migrants.png)
