@@ -1,4 +1,5 @@
 ![missing-migrants-preview](https://github.com/yotkadata/missing-migrants/assets/7913590/5381e452-acf6-4bc6-9541-9a83a52ccef8)
+
 # Missing Migrants
 
 ### Visualizing IOM data on people who went missing or lost their lives during migration
@@ -9,7 +10,11 @@ This repository contains the code for a visualization made with **Svelte** and *
 
 The Mediterranean has by far been the region where most deaths and disappearances have been documented: More than 28,000.
 
-Find an **interactive version** here: https://yotka.org/missing-migrants/
-(Disclaimer: it probably takes some time to load.)
+### Data
 
 The [Dataset](https://missingmigrants.iom.int/downloads) used for this project is the result of meticulous work by the Missing Migrants Project. It contains more than 13,000 incidents with information on where they happened, how many people died, which migration route was used, and where the information came from. Read more about the [methodology](https://missingmigrants.iom.int/methodology) here.
+
+### Interactive version
+
+Find an **interactive version** here: https://yotka.org/missing-migrants/
+(Disclaimer: it probably takes some time to load.)
