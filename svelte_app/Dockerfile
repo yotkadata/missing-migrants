@@ -6,8 +6,8 @@ FROM node:16 AS builder
 # Set the working directory
 WORKDIR /app
 
-# Copy package.json, package-lock.json (if available), and vite.config.js
-COPY package.json package-lock.json vite.config.js ./
+# Copy package.json and vite.config.js
+COPY package.json vite.config.js ./
 
 # Install dependencies
 RUN npm install
