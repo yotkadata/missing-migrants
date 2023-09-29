@@ -115,7 +115,7 @@ def export_thresholds_to_json(data: pd.DataFrame) -> None:
     """
 
     # Resample "Total Number of Dead and Missing" by day
-    resampled = data.groupby("date")[["value"]].sum().resample("D").sum()
+    resampled = data.groupby("date")[["value"]].sum().resample("D").sum().copy()
 
     # Add cumulative sum column
     resampled["cumsum"] = resampled.cumsum()
@@ -140,6 +140,35 @@ def export_thresholds_to_json(data: pd.DataFrame) -> None:
     thresholds.to_json(json_file, orient="records")
 
     print(f"Data with thresholds exported to {json_file}")
+
+
+def export_yearly_to_json(data: pd.DataFrame) -> None:
+    """
+    Function to export the yearly totals by region to a JSON file.
+    """
+
+    yearly = data[["group", "date", "value"]].copy()
+    yearly["year"] = yearly["date"].dt.year
+
+    # Group by region and year
+    yearly_grouped = yearly.groupby(["group", "year"])["value"].sum().reset_index()
+
+    # Pivot the DataFrame to make "year" as columns
+    df_pivot = yearly_grouped.pivot(
+        index="group", columns="year", values="value"
+    ).fillna(0)
+
+    # Change column dtype to int
+    df_pivot = df_pivot.astype(int)
+
+    # Make sure data directory exists
+    Path("data").mkdir(parents=True, exist_ok=True)
+
+    # Export data to json
+    json_file = "data/data-migration-yearly.json"
+    df_pivot.to_json(json_file, orient="index")
+
+    print(f"Data with yearly values exported to {json_file}")
 
 
 def export_data_to_json() -> None:
@@ -186,6 +215,9 @@ def export_data_to_json() -> None:
 
         # Export thresholds to json
         export_thresholds_to_json(data)
+
+        # Export yearly totals to json
+        export_yearly_to_json(data)
 
         # Drop rows without date
         data.dropna(subset=["date"], inplace=True)
