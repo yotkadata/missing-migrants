@@ -24,9 +24,9 @@
   let maxDate = new Date();
   let originalMinDate, originalMaxDate;
 
-  const dataIncidents = "/data/data-migration-incidents.json";
-  const dataTotals = "/data/data-migration-totals.json";
-  const dataThresholds = "/data/data-migration-thresholds.json";
+  const dataIncidents = "data/data-migration-incidents.json";
+  const dataTotals = "data/data-migration-totals.json";
+  const dataThresholds = "data/data-migration-thresholds.json";
 
   onMount(async () => {
     loadData();
