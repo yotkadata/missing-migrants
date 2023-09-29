@@ -6,6 +6,7 @@
   export let colorMapping;
   export let chartReady;
   export let circleHovered;
+  export let legendHovered;
 
   import { forceSimulation, forceY, forceX, forceCollide } from "d3-force";
 
@@ -47,24 +48,35 @@
       // })
       .restart();
   }
+  // Get unique values in data.group as array
+  const groups = [...new Set(data.map((d) => d.group))];
 </script>
 
 {#if chartReady}
   <g class="circles">
-    {#each data as node}
-      <circle
-        cx={node.x}
-        cy={node.y}
-        r={radiusScale(node.value)}
-        fill={colorMapping[node.group]}
-        stroke={circleHovered === node ? "#fff" : "transparent"}
-        on:mouseover={() => {
-          circleHovered = node;
-        }}
-        on:focus={() => {
-          circleHovered = node;
-        }}
-      />
+    {#each groups as group}
+      <g
+        class="group-{group}"
+        opacity={legendHovered ? (legendHovered === group ? 1 : 0.3) : 1}
+      >
+        {#each data as node}
+          {#if node.group === group}
+            <circle
+              cx={node.x}
+              cy={node.y}
+              r={radiusScale(node.value)}
+              fill={colorMapping[node.group]}
+              stroke={circleHovered === node ? "#fff" : "transparent"}
+              on:mouseover={() => {
+                circleHovered = node;
+              }}
+              on:focus={() => {
+                circleHovered = node;
+              }}
+            />
+          {/if}
+        {/each}
+      </g>
     {/each}
   </g>
 {:else}

@@ -224,6 +224,7 @@
               bind:data
               bind:chartReady
               bind:circleHovered
+              {legendHovered}
             />
           </g>
           {#if chartReady}
@@ -252,14 +253,12 @@
         {#if legendHovered}
           <TooltipLegend
             data={legendHovered}
-            width={innerWidth}
             height={innerHeight}
             {margin}
             {totals}
             {formatNumber}
             {formatPct}
             {colorMapping}
-            bind:circleHovered
             {yScale}
           />
         {/if}
