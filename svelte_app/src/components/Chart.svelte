@@ -41,11 +41,6 @@
           chartReady = true;
         }
       })
-      // // Precalculate positions
-      // .on("end", () => {
-      //   chartReady = true;
-      //   console.log(JSON.stringify(data));
-      // })
       .restart();
   }
   // Get unique values in data.group as array
