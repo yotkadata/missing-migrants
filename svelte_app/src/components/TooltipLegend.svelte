@@ -1,7 +1,9 @@
 <script>
   import { fly, fade } from "svelte/transition";
+  import LineChart from "$components/LineChart.svelte";
 
   export let data;
+  export let dataYearly;
   export let formatNumber;
   export let formatPct;
   export let colorMapping;
@@ -45,6 +47,9 @@
     <p class="pct-missing">
       {formatPct(totals[data].pct / 100)} of all dead/missing
     </p>
+  </div>
+  <div class="line-chart">
+    <LineChart data={dataYearly} width={tooltipWidth} />
   </div>
 </div>
 
