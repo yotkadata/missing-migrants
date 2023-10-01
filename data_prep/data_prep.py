@@ -52,6 +52,7 @@ def get_data_url() -> str:
             if csv_link:
                 csv_link = f"https://missingmigrants.iom.int{csv_link}"
                 print("CSV URL retrieved successfully from missingmigrants.iom.int")
+                print(csv_link)
             else:
                 print("CSV URL not found")
 
