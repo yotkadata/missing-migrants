@@ -49,7 +49,12 @@
     </p>
   </div>
   <div class="line-chart">
-    <LineChart data={dataYearly} width={tooltipWidth} />
+    <LineChart
+      data={dataYearly}
+      width={tooltipWidth}
+      region={data}
+      {colorMapping}
+    />
   </div>
 </div>
 

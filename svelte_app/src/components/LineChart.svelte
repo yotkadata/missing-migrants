@@ -5,99 +5,123 @@
   // Receive plot data as prop.
   export let data;
   export let width;
+  export let colorMapping;
+  export let region;
   width = 300;
-
   let height = parseInt((width / 16) * 9);
 
+  let margin = {
+    top: 20,
+    right: 20,
+    bottom: 30,
+    left: 40,
+  };
+
+  $: innerWidth = width - margin.left - margin.right;
+  $: innerHeight = height - margin.top - margin.bottom;
+
   // Extract years and values
-  const years = Object.keys(data);
-  const values = Object.values(data).map((value) => parseInt(value));
+  $: years = Object.keys(data).map((key) => parseInt(key));
+  $: values = Object.values(data).map((value) => parseInt(value));
 
-  //let chartData = years.map((year, index) => ({ year, value: values[index] }));
+  // Write to array of objects
+  $: chartData = years.map((year, index) => ({ year, value: values[index] }));
 
-  // Setting up xScale
-  const xScale = scaleBand().domain(years).range([0, width]);
+  $: xScale = scaleBand().domain(years).range([0, innerWidth]);
 
-  // Setting up yScale
-  const yScale = scaleLinear().domain(+values).range([height, 0]);
+  $: yScale = scaleLinear()
+    .domain([0, Math.max(...values)])
+    .range([innerHeight, 0])
+    .nice();
 
-  const linePath = line()
-    .x(xScale(years) + xScale.bandwidth() / 2) // Center the point in the band
-    .y(yScale(+values));
-  console.log("data", data);
-  console.log("width", width);
-  console.log("height", height);
+  $: linePath = line()
+    .x((d) => xScale(d.year))
+    .y((d) => yScale(d.value));
 </script>
 
-<svg {width} {height}>
-  <!-- X-Axis -->
-  <g class="axis x" transform="translate(0, {height})">
-    <line stroke="currentColor" x1={-6} x2={width} />
+<svg class="line-chart" {width} {height}>
+  <g
+    class="line-chart-inner"
+    width={innerWidth}
+    height={innerHeight}
+    transform="translate({margin.left},{margin.top})"
+  >
+    <!-- X-Axis -->
+    <g class="axis x" transform="translate(0, {innerHeight})">
+      <line stroke="black" x1="0" x2={innerWidth} />
 
-    {#each years as year}
-      <!-- X-Axis Ticks -->
-      <line
-        stroke="currentColor"
-        x1={xScale(year)}
-        x2={xScale(year)}
-        y1={0}
-        y2={6}
-      />
-
-      <!-- X-Axis Tick Labels -->
-      <text fill="currentColor" text-anchor="middle" x={xScale(year)} y={22}>
-        {year}
-      </text>
-    {/each}
-  </g>
-
-  <!-- Y-Axis and Grid Lines -->
-  <g transform="translate(0,0)">
-    {#each yScale.ticks() as tick}
-      {#if tick !== 0}
-        <!-- 
-            Grid Lines. 
-            Note: First line is skipped since the x-axis is already present at 0. 
-          -->
+      {#each years as year}
+        <!-- X-Axis Ticks -->
         <line
-          stroke="currentColor"
-          stroke-opacity="0.1"
-          x1={0}
-          x2={width}
-          y1={yScale(tick)}
-          y2={yScale(tick)}
+          stroke="black"
+          x1={xScale(year)}
+          x2={xScale(year)}
+          y1="1"
+          y2="5"
         />
 
-        <!-- 
+        <!-- X-Axis Tick Labels for even years -->
+        {#if year % 2 === 0}
+          <text fill="black" text-anchor="middle" x={xScale(year)} y="20">
+            {year}
+          </text>
+        {/if}
+      {/each}
+    </g>
+
+    <!-- Y-Axis and Grid Lines -->
+    <g class="axis y">
+      {#each yScale.ticks(4) as tick}
+        {#if tick !== 0}
+          <!-- 
+            Grid Lines (skip first line since already present at 0) 
+          -->
+          <line
+            stroke="black"
+            stroke-opacity="0.1"
+            x1="0"
+            x2={innerWidth}
+            y1={yScale(tick)}
+            y2={yScale(tick)}
+          />
+
+          <!-- 
             Y-Axis Ticks. 
             Note: First tick is skipped since the x-axis already acts as a tick. 
           -->
-        <line
-          stroke="currentColor"
-          x1={0}
-          x2={-6}
-          y1={yScale(tick)}
-          y2={yScale(tick)}
-        />
-      {/if}
+          <line
+            stroke="black"
+            x1="0"
+            x2="-6"
+            y1={yScale(tick)}
+            y2={yScale(tick)}
+          />
+        {/if}
 
-      <!-- Y-Axis Tick Labels -->
-      <text
-        fill="currentColor"
-        text-anchor="end"
-        dominant-baseline="middle"
-        x={-9}
-        y={yScale(tick)}
-      >
-        {tick}
-      </text>
-    {/each}
+        <!-- Y-Axis Tick Labels -->
+        <text
+          fill="black"
+          text-anchor="end"
+          dominant-baseline="middle"
+          x="-9"
+          y={yScale(tick)}
+        >
+          {tick}
+        </text>
+      {/each}
+    </g>
 
-    <!-- Y-Axis Label -->
-    <text fill="currentColor" text-anchor="start" x={0} y={15}>
-      ↑ Daily close ($)
-    </text>
+    <path
+      fill="none"
+      stroke={colorMapping[region]}
+      stroke-width="1.5"
+      d={linePath(chartData)}
+    />
   </g>
-
-  <path fill="none" stroke="steelblue" stroke-width="1.5" d={linePath(data)} />
 </svg>
+
+<style>
+  .line-chart {
+    font-size: 0.78125vw; /* 20px at 2560 */
+  }
+</style>
