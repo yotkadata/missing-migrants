@@ -12,6 +12,7 @@
   export let margin;
   export let yScale;
   export let calcVw;
+  export let textColors;
 
   let tooltipWidth;
   let tooltipHeight;
@@ -27,25 +28,6 @@
       yPosition = margin.top + yScale(data);
     }
   }
-
-  const textColors = {
-    "North America": "#fff",
-    "Central America": "#000",
-    Caribbean: "#000",
-    "South America": "#000",
-    Mediterranean: "#fff",
-    Europe: "#fff",
-    "Northern Africa": "#000",
-    "Eastern Africa": "#000",
-    "Western Africa": "#000",
-    "Middle Africa": "#000",
-    "Southern Africa": "#000",
-    "South-eastern Asia": "#fff",
-    "Southern Asia": "#000",
-    "Western Asia": "#000",
-    "Central Asia": "#000",
-    "Eastern Asia": "#000",
-  };
 </script>
 
 <div

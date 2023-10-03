@@ -98,6 +98,24 @@
     "Central Asia": "hsla(268, 17%, 80%, 1)",
     "Eastern Asia": "hsla(268, 17%, 90%, 1)",
   };
+  const textColors = {
+    "North America": "#fff",
+    "Central America": "#000",
+    Caribbean: "#000",
+    "South America": "#000",
+    Mediterranean: "#fff",
+    Europe: "#fff",
+    "Northern Africa": "#000",
+    "Eastern Africa": "#000",
+    "Western Africa": "#000",
+    "Middle Africa": "#000",
+    "Southern Africa": "#000",
+    "South-eastern Asia": "#fff",
+    "Southern Asia": "#000",
+    "Western Asia": "#000",
+    "Central Asia": "#000",
+    "Eastern Asia": "#000",
+  };
   const maxRadius = calcVw(50);
   const minRadius = calcVw(1);
   let chartReady = false;
@@ -253,6 +271,7 @@
             {radiusScale}
             {formatNumber}
             {colorMapping}
+            {textColors}
           />
         {/if}
         {#if legendHovered}
@@ -267,6 +286,7 @@
             {colorMapping}
             {yScale}
             {calcVw}
+            {textColors}
           />
         {/if}
       </div>

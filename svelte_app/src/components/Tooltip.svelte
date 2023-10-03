@@ -9,6 +9,7 @@
   export let radiusScale;
   export let formatNumber;
   export let colorMapping;
+  export let textColors;
 
   let tooltipWidth;
   let tooltipHeight;
@@ -69,7 +70,12 @@
   bind:clientHeight={tooltipHeight}
 >
   <div class="text">
-    <p class="region" style="background-color: {colorMapping[data.group]}">
+    <p
+      class="region"
+      style="background-color: {colorMapping[data.group]}; color: {textColors[
+        data.group
+      ]};"
+    >
       {data.group}
     </p>
     <p class="number-missing">
