@@ -11,6 +11,7 @@
   export let height;
   export let margin;
   export let yScale;
+  export let calcVw;
 
   let tooltipWidth;
   let tooltipHeight;
@@ -32,7 +33,7 @@
   class="tooltip"
   style="position: absolute; top: {yPosition}px; right: {xPosition}px; border: 2px solid {colorMapping[
     data
-  ]};"
+  ]}; width: {calcVw(800)}px;"
   in:fly={{ y: 10, duration: 200, delay: 200 }}
   out:fade={{ duration: 600 }}
   bind:clientWidth={tooltipWidth}
@@ -48,14 +49,14 @@
       {formatPct(totals[data].pct / 100)} of all dead/missing
     </p>
   </div>
-  <div class="line-chart">
-    <BarChart
-      data={dataYearly}
-      width={tooltipWidth}
-      region={data}
-      {colorMapping}
-    />
-  </div>
+  <BarChart
+    data={dataYearly}
+    width={tooltipWidth}
+    region={data}
+    {colorMapping}
+    {formatNumber}
+    {calcVw}
+  />
 </div>
 
 <style>
@@ -63,11 +64,11 @@
     background-color: #fff;
     box-shadow: 0 0 0.15625vw rgba(255, 255, 255, 0.5);
     padding: 0;
-    border-radius: 5%;
+    border-radius: 0 0 5% 5%;
     align-items: center;
     transition: top 300ms ease, left 300ms ease;
     z-index: 10;
-    max-width: 23.4375vw; /* 600px at 2560 */
+    max-width: 31.25vw; /* 800px at 2560 */
     min-width: 11.71875vw; /* 300px at 2560 */
     word-wrap: break-word;
   }

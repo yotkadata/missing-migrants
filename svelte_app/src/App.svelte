@@ -266,6 +266,7 @@
             {formatPct}
             {colorMapping}
             {yScale}
+            {calcVw}
           />
         {/if}
       </div>
