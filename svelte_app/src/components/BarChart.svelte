@@ -147,9 +147,10 @@
 
 <style>
   .bar-chart {
-    font-size: 0.78125vw; /* 20px at 2560 */
+    font-size: 0.9375vw; /* 24px at 2560 */
   }
   .annotate-max {
     font-weight: 600;
+    text-shadow: 2px 2px 2px #fff;
   }
 </style>
