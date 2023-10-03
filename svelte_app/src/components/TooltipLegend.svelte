@@ -1,6 +1,6 @@
 <script>
   import { fly, fade } from "svelte/transition";
-  import LineChart from "$components/LineChart.svelte";
+  import BarChart from "$components/BarChart.svelte";
 
   export let data;
   export let dataYearly;
@@ -49,7 +49,7 @@
     </p>
   </div>
   <div class="line-chart">
-    <LineChart
+    <BarChart
       data={dataYearly}
       width={tooltipWidth}
       region={data}
