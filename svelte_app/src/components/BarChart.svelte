@@ -14,7 +14,7 @@
     top: calcVw(30),
     right: calcVw(30),
     bottom: calcVw(40),
-    left: calcVw(70),
+    left: calcVw(80),
   };
 
   $: innerWidth = width - margin.left - margin.right;

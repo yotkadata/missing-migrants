@@ -27,6 +27,25 @@
       yPosition = margin.top + yScale(data);
     }
   }
+
+  const textColors = {
+    "North America": "#fff",
+    "Central America": "#000",
+    Caribbean: "#000",
+    "South America": "#000",
+    Mediterranean: "#fff",
+    Europe: "#fff",
+    "Northern Africa": "#000",
+    "Eastern Africa": "#000",
+    "Western Africa": "#000",
+    "Middle Africa": "#000",
+    "Southern Africa": "#000",
+    "South-eastern Asia": "#fff",
+    "Southern Asia": "#000",
+    "Western Asia": "#000",
+    "Central Asia": "#000",
+    "Eastern Asia": "#000",
+  };
 </script>
 
 <div
@@ -40,7 +59,10 @@
   bind:clientHeight={tooltipHeight}
 >
   <div class="text">
-    <p class="group" style="background-color: {colorMapping[data]}">
+    <p
+      class="group"
+      style="background-color: {colorMapping[data]}; color: {textColors[data]}"
+    >
       {data}
     </p>
     <div class="flex-container">
@@ -98,7 +120,6 @@
     padding: 0.15625vw 0.625vw; /* 4px 16px at 2560 */
   }
   .tooltip p.group {
-    color: #f8f8f8;
     font-weight: 800;
     padding: 0.625vw; /* 16px at 2560 */
     text-transform: uppercase;
