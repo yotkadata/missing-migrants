@@ -46,6 +46,48 @@
     height={innerHeight}
     transform="translate({margin.left},{margin.top})"
   >
+    <!-- Y-Axis and Grid Lines -->
+    <g class="axis y" transform="translate(0,0)">
+      {#each yScale.ticks(5) as tick}
+        {#if tick !== 0}
+          <!-- 
+              Grid Lines (skip first line since already present at 0) 
+            -->
+          <line
+            stroke="black"
+            stroke-opacity="0.1"
+            x1="0"
+            x2={innerWidth}
+            y1={yScale(tick)}
+            y2={yScale(tick)}
+          />
+        {/if}
+
+        <!-- Y-Axis Tick Labels -->
+        <text
+          fill="black"
+          text-anchor="end"
+          dominant-baseline="middle"
+          x="-6"
+          y={yScale(tick)}
+        >
+          {tick}
+        </text>
+      {/each}
+    </g>
+
+    <g class="bars">
+      {#each chartData as barData}
+        <rect
+          x={xScale(barData.year) + barGap / 2}
+          y={yScale(barData.value)}
+          width={barWidth - barGap}
+          height={yScale(0) - yScale(barData.value)}
+          fill={colorMapping[region]}
+        />
+      {/each}
+    </g>
+
     <!-- X-Axis -->
     <g class="axis x" transform="translate(0, {innerHeight})">
       <line stroke="black" x1="0" x2={innerWidth} />
@@ -69,60 +111,6 @@
         >
           {"'" + year.toString().slice(-2)}
         </text>
-      {/each}
-    </g>
-
-    <!-- Y-Axis and Grid Lines -->
-    <g class="axis y" transform="translate(0,0)">
-      {#each yScale.ticks(5) as tick}
-        {#if tick !== 0}
-          <!-- 
-              Grid Lines (skip first line since already present at 0) 
-            -->
-          <line
-            stroke="black"
-            stroke-opacity="0.1"
-            x1="0"
-            x2={innerWidth}
-            y1={yScale(tick)}
-            y2={yScale(tick)}
-          />
-
-          <!-- 
-              Y-Axis Ticks. 
-              Note: First tick is skipped since the x-axis already acts as a tick. 
-            -->
-          <line
-            stroke="black"
-            x1="0"
-            x2="-6"
-            y1={yScale(tick)}
-            y2={yScale(tick)}
-          />
-        {/if}
-
-        <!-- Y-Axis Tick Labels -->
-        <text
-          fill="black"
-          text-anchor="end"
-          dominant-baseline="middle"
-          x="-9"
-          y={yScale(tick)}
-        >
-          {tick}
-        </text>
-      {/each}
-    </g>
-
-    <g class="bars">
-      {#each chartData as barData}
-        <rect
-          x={xScale(barData.year) + barGap / 2}
-          y={yScale(barData.value)}
-          width={barWidth - barGap}
-          height={yScale(0) - yScale(barData.value)}
-          fill={colorMapping[region]}
-        />
       {/each}
     </g>
   </g>
