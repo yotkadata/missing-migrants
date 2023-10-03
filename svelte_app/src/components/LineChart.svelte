@@ -63,7 +63,7 @@
         <!-- X-Axis Tick Labels for even years -->
         {#if year % 2 === 0}
           <text fill="black" text-anchor="middle" x={xScale(year)} y="20">
-            {year}
+            {"'" + year.toString().slice(-2)}
           </text>
         {/if}
       {/each}
@@ -71,7 +71,7 @@
 
     <!-- Y-Axis and Grid Lines -->
     <g class="axis y">
-      {#each yScale.ticks(4) as tick}
+      {#each yScale.ticks(5) as tick}
         {#if tick !== 0}
           <!-- 
             Grid Lines (skip first line since already present at 0) 
