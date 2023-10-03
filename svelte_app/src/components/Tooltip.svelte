@@ -134,7 +134,7 @@
   }
   .text p {
     color: #000;
-    font-size: 0.78125vw; /* 20px at 2560 */
+    font-size: 0.9375vw; /* 24px at 2560 */
     padding: 0.15625vw 0.625vw; /* 4px 16px at 2560 */
   }
   .text p.region {
