@@ -118,7 +118,7 @@
               fill="black"
               text-anchor="middle"
               x={xScale(year)}
-              y={calcVw(25)}
+              y={calcVw(30)}
             >
               {"'" + year.toString().slice(-2)}
             </text>
