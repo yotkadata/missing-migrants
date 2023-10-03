@@ -192,13 +192,12 @@
       <h2>
         The Missing Migrants Project of the International Organization for
         Migration (IOM) has documented {formatNumber(totals["Total"].value)} cases
-        of people who died or went missing during migration (as of {formatDate(
-          originalMaxDate
-        )}). The actual number is likely much higher. Each circle in this graph
-        represents an incident where at least one migrant died or went missing.
-        The circle's size indicates the number of people affected. Color and
-        vertical position denote the region of occurrence. Incidents are
-        arranged by date from left to right.
+        of people who died or went missing during migration. The actual number is
+        likely much higher. Each circle in this graph represents an incident where
+        at least one migrant died or went missing. The circle's size indicates the
+        number of people affected. Color and vertical position denote the region
+        of occurrence. Incidents are arranged by date from left to right. (Last included
+        incident: {formatDate(originalMaxDate)})
       </h2>
 
       <div
