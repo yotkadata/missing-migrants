@@ -125,6 +125,22 @@
           {/each}
         </g>
       </g>
+      <!-- Annotation for maximum value -->
+      {#each chartData as datum}
+        {#if datum.value === Math.max(...values)}
+          <g class="annotate-max">
+            <text
+              fill="black"
+              text-anchor="middle"
+              dominant-baseline="text-bottom"
+              x={xScale(datum.year) + barWidth / 2 + barGap}
+              y={yScale(datum.value) - calcVw(10)}
+            >
+              {formatNumber(datum.value)}
+            </text>
+          </g>
+        {/if}
+      {/each}
     </g>
   </svg>
 </div>
@@ -132,5 +148,8 @@
 <style>
   .bar-chart {
     font-size: 0.78125vw; /* 20px at 2560 */
+  }
+  .annotate-max {
+    font-weight: 600;
   }
 </style>
