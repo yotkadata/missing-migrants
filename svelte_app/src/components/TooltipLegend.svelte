@@ -4,15 +4,19 @@
 
   export let data;
   export let dataYearly;
-  export let formatNumber;
-  export let formatPct;
-  export let colorMapping;
   export let totals;
+
+  export let colorMapping;
+  export let textColors;
+
   export let height;
   export let margin;
+
+  export let formatNumber;
+  export let formatPct;
+
   export let yScale;
   export let calcVw;
-  export let textColors;
 
   let tooltipWidth;
   let tooltipHeight;
@@ -60,9 +64,9 @@
   </div>
   <BarChart
     data={dataYearly}
-    width={tooltipWidth}
     region={data}
     {colorMapping}
+    width={tooltipWidth}
     {formatNumber}
     {calcVw}
   />

@@ -1,20 +1,24 @@
 <script>
   import { fly, fade } from "svelte/transition";
-  import { timeFormat } from "d3-time-format";
 
   export let data;
+  export let colorMapping;
+  export let textColors;
+
   export let width;
   export let height;
   export let margin;
+
+  export let calcVw;
   export let radiusScale;
+
+  export let formatDate;
   export let formatNumber;
-  export let colorMapping;
-  export let textColors;
 
   let tooltipWidth;
   let tooltipHeight;
 
-  let yOffset = -20;
+  let yOffset = calcVw(-20);
 
   $: xPosition =
     data.x + tooltipWidth + margin.left + radiusScale(data.value) > width
@@ -30,9 +34,6 @@
       yPosition = data.y + margin.top - radiusScale(data.value) + yOffset;
     }
   }
-
-  // Function to format dates
-  const formatDate = timeFormat("%e %b %Y");
 
   // Build links from source and url
   let sources;

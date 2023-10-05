@@ -264,13 +264,15 @@
         {#if circleHovered}
           <Tooltip
             data={circleHovered}
+            {colorMapping}
+            {textColors}
             width={innerWidth}
             height={innerHeight}
             {margin}
+            {calcVw}
             {radiusScale}
+            {formatDate}
             {formatNumber}
-            {colorMapping}
-            {textColors}
           />
         {/if}
         {#if legendHovered}

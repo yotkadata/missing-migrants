@@ -2,8 +2,9 @@
   import { scaleLinear } from "d3-scale";
 
   export let data;
-  export let colorMapping;
   export let region;
+  export let colorMapping;
+
   export let formatNumber;
   export let calcVw;
 
