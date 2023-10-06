@@ -154,20 +154,29 @@ def export_yearly_to_json(data: pd.DataFrame) -> None:
     yearly_grouped = yearly.groupby(["group", "year"])["value"].sum().reset_index()
 
     # Pivot the DataFrame to make "year" as columns
-    df_pivot = yearly_grouped.pivot(
+    df_pivot_by_group = yearly_grouped.pivot(
         index="group", columns="year", values="value"
     ).fillna(0)
 
+    # Pivot the DataFrame to make "group" as columns
+    df_pivot_by_year = yearly_grouped.pivot(
+        index="year", columns="group", values="value"
+    ).fillna(0)
+
     # Change column dtype to int
-    df_pivot = df_pivot.astype(int)
+    df_pivot_by_group = df_pivot_by_group.astype(int)
+    df_pivot_by_year = df_pivot_by_year.astype(int)
 
     # Make sure data directory exists
     Path("data").mkdir(parents=True, exist_ok=True)
 
     # Export data to json
-    json_file = "data/data-migration-yearly.json"
-    df_pivot.to_json(json_file, orient="index")
+    json_file = "data/data-migration-yearly-by-group.json"
+    df_pivot_by_group.to_json(json_file, orient="index")
+    print(f"Data with yearly values exported to {json_file}")
 
+    json_file = "data/data-migration-yearly-by-year.json"
+    df_pivot_by_year.to_json(json_file, orient="index")
     print(f"Data with yearly values exported to {json_file}")
 
 

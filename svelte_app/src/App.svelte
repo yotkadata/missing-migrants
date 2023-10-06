@@ -19,7 +19,7 @@
   let data = [];
   let totals = [];
   let thresholds = [];
-  let yearly = [];
+  let yearlyByGroup = [];
   let loading = true;
   let minDate = new Date();
   let maxDate = new Date();
@@ -28,7 +28,7 @@
   const dataIncidents = "data/data-migration-incidents.json";
   const dataTotals = "data/data-migration-totals.json";
   const dataThresholds = "data/data-migration-thresholds.json";
-  const dataYearly = "data/data-migration-yearly.json";
+  const dataYearlyByGroup = "data/data-migration-yearly-by-group.json";
 
   onMount(async () => {
     loadData();
@@ -51,8 +51,8 @@
       // Fetch migration totals data
       totals = await fetchData(dataTotals);
 
-      // Fetch migration yearly data
-      yearly = await fetchData(dataYearly);
+      // Fetch migration yearly data by group
+      yearlyByGroup = await fetchData(dataYearlyByGroup);
 
       loading = false;
     } catch (error) {
@@ -278,7 +278,7 @@
         {#if legendHovered}
           <TooltipLegend
             data={legendHovered}
-            dataYearly={yearly[legendHovered]}
+            dataYearly={yearlyByGroup[legendHovered]}
             height={innerHeight}
             {margin}
             {totals}
