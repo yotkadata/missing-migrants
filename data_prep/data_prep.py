@@ -3,6 +3,7 @@ Python script to fetch data from the IOM website and
 preprocess it for use in the missing-migrants project.
 """
 
+import json
 from pathlib import Path
 
 import pandas as pd
@@ -180,6 +181,84 @@ def export_yearly_to_json(data: pd.DataFrame) -> None:
     print(f"Data with yearly values exported to {json_file}")
 
 
+def export_treemap_to_json(data: pd.DataFrame) -> None:
+    """
+    Function to export the treemap data to a JSON file.
+    """
+
+    yearly = data[["group", "date", "value"]].copy()
+    yearly["year"] = yearly["date"].dt.year
+
+    # Group by region and year
+    yearly_grouped = yearly.groupby(["group", "year"])["value"].sum().reset_index()
+
+    # Pivot the DataFrame to make "year" as columns
+    df_pivot_by_year = yearly_grouped.pivot(
+        index="group", columns="year", values="value"
+    ).fillna(0)
+
+    region_mapping = {
+        "Africa": [
+            "Eastern Africa",
+            "Middle Africa",
+            "Northern Africa",
+            "Southern Africa",
+            "Western Africa",
+        ],
+        "Americas": [
+            "Caribbean",
+            "Central America",
+            "North America",
+            "South America",
+        ],
+        "Asia": [
+            "Central Asia",
+            "Eastern Asia",
+            "South-eastern Asia",
+            "Southern Asia",
+            "Western Asia",
+        ],
+        "Europe": [
+            "Europe",
+            "Mediterranean",
+        ],
+    }
+
+    output = {"name": "treemap", "children": []}
+
+    for year in df_pivot_by_year.columns:  # Loop over each year in the dataframe
+        year_data = {"name": str(year), "children": []}
+
+        for region_group, sub_regions in region_mapping.items():
+            region_group_data = {"name": region_group, "children": []}
+
+            for sub_region in sub_regions:
+                if (
+                    sub_region in df_pivot_by_year.index
+                ):  # Check if the sub_region exists in the dataframe
+                    region_group_data["children"].append(
+                        {
+                            "name": sub_region,
+                            "value": df_pivot_by_year.at[sub_region, year],
+                        }
+                    )
+
+            # If there are any children (regions) added
+            if region_group_data["children"]:
+                year_data["children"].append(region_group_data)
+
+        output["children"].append(year_data)
+
+    # Make sure data directory exists
+    Path("data").mkdir(parents=True, exist_ok=True)
+
+    # Saving the constructed JSON structure to a file
+    json_file = "data/data-migration-treemap.json"
+    with open(json_file, "w", encoding="utf-8") as file:
+        json.dump(output, file, indent=4)
+    print(f"Data with treemap values exported to {json_file}")
+
+
 def export_data_to_json() -> None:
     """
     Function to export the data to a JSON file.
@@ -227,6 +306,9 @@ def export_data_to_json() -> None:
 
         # Export yearly totals to json
         export_yearly_to_json(data)
+
+        # Export treemap data to json
+        export_treemap_to_json(data)
 
         # Drop rows without date
         data.dropna(subset=["date"], inplace=True)
