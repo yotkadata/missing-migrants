@@ -1,4 +1,7 @@
 <script>
+  import { get } from "svelte/store";
+
+  export let yearHovered;
   export let xScale;
   export let height;
 
@@ -12,7 +15,19 @@
 
 <g class="axis x">
   {#each januaryFirstTicks as tick}
-    <g class="tick" transform="translate({xScale(tick)}, 0)">
+    <g
+      class="tick"
+      transform="translate({xScale(tick)}, 0)"
+      on:mouseover={() => {
+        yearHovered = tick.getFullYear();
+      }}
+      on:focus={() => {
+        yearHovered = tick.getFullYear();
+      }}
+      on:mouseleave={() => {
+        yearHovered = false;
+      }}
+    >
       <text x="3" y={height}>{tick.getFullYear()}</text>
       <line
         x1="0"

@@ -8,6 +8,7 @@
   import Thresholds from "$components/Thresholds.svelte";
   import Tooltip from "$components/Tooltip.svelte";
   import TooltipLegend from "$components/TooltipLegend.svelte";
+  import TooltipYear from "$components/TooltipYear.svelte";
 
   // D3 and Svelte utilities
   import { scaleBand, scaleSqrt, scaleTime } from "d3-scale";
@@ -122,6 +123,7 @@
   let showAnnotations = true;
   let circleHovered;
   let legendHovered;
+  let yearHovered;
 
   // Scales
   $: yScale = scaleBand()
@@ -226,7 +228,7 @@
             class="inner-chart"
             transform="translate({margin.left}, {margin.top})"
           >
-            <AxisX {xScale} height={innerHeight} />
+            <AxisX bind:yearHovered {xScale} height={innerHeight} />
             <Legend
               {yScale}
               {radiusScale}
@@ -289,6 +291,9 @@
             {calcVw}
             {textColors}
           />
+        {/if}
+        {#if yearHovered}
+          <TooltipYear {yearHovered} />
         {/if}
       </div>
       <Source />
