@@ -293,7 +293,13 @@
           />
         {/if}
         {#if yearHovered}
-          <TooltipYear {yearHovered} />
+          <TooltipYear
+            {yearHovered}
+            width={innerWidth}
+            height={innerHeight}
+            {calcVw}
+            {xScale}
+          />
         {/if}
       </div>
       <Source />
