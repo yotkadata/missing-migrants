@@ -1,15 +1,32 @@
 <script>
+  import Treemap from "$components/Treemap.svelte";
+
   export let yearHovered;
   export let width;
   export let height;
   export let calcVw;
   export let xScale;
+  export let yearTreemap;
+  export let colorMapping;
+  export let formatNumber;
 
-  let tooltipWidth;
-  let tooltipHeight;
+  let tooltipWidth = calcVw(1200);
+  let tooltipHeight = tooltipWidth;
+
+  let toolTipMargin = {
+    top: calcVw(10),
+    right: calcVw(10),
+    bottom: calcVw(10),
+    left: calcVw(10),
+  };
+
+  let tooltipInnerWidth =
+    tooltipWidth - toolTipMargin.left - toolTipMargin.right;
+  let tooltipInnerHeight =
+    tooltipHeight - toolTipMargin.top - toolTipMargin.bottom;
+
   let xPosition;
-
-  let yPosition = height;
+  let yPosition = height - tooltipHeight;
 
   $: {
     if (
@@ -23,20 +40,37 @@
     }
   }
 
-  $: console.log("yearHovered", yearHovered);
-  $: console.log("xPosition", xPosition);
-  $: console.log("tooltipWidth", tooltipWidth);
+  let yearTreemapFiltered = {};
+
+  // A reactive statement that watches for changes to `yearHovered`
+  // and updates `filteredData` accordingly.
+  $: filterDataByYear();
+
+  function filterDataByYear() {
+    const yearData = yearTreemap.children?.find(
+      (child) => child.name === yearHovered.toString()
+    );
+    if (yearData) {
+      yearTreemapFiltered = {
+        name: yearTreemap.name,
+        children: [yearData],
+      };
+    }
+  }
 </script>
 
 <div
   class="tooltip-year"
-  style="position: absolute; top: {yPosition}px; left: {xPosition}px; width: {calcVw(
-    800
-  )}px;"
-  bind:clientWidth={tooltipWidth}
-  bind:clientHeight={tooltipHeight}
+  style="position: absolute; top: {yPosition}px; left: {xPosition}px; width: {tooltipWidth}px; height: {tooltipHeight}px;"
 >
-  Some Text
+  <h2>{yearHovered}</h2>
+  <Treemap
+    data={yearTreemapFiltered}
+    width={tooltipInnerWidth}
+    height={tooltipInnerHeight}
+    {colorMapping}
+    {formatNumber}
+  />
 </div>
 
 <style>

@@ -1,6 +1,4 @@
 <script>
-  import { get } from "svelte/store";
-
   export let yearHovered;
   export let xScale;
   export let height;

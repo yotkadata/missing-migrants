@@ -21,6 +21,8 @@
   let totals = [];
   let thresholds = [];
   let yearlyByGroup = [];
+  let yearTreemap = [];
+
   let loading = true;
   let minDate = new Date();
   let maxDate = new Date();
@@ -30,6 +32,7 @@
   const dataTotals = "data/data-migration-totals.json";
   const dataThresholds = "data/data-migration-thresholds.json";
   const dataYearlyByGroup = "data/data-migration-yearly-by-group.json";
+  const dataYearTreemap = "data/data-migration-treemap.json";
 
   onMount(async () => {
     loadData();
@@ -54,6 +57,9 @@
 
       // Fetch migration yearly data by group
       yearlyByGroup = await fetchData(dataYearlyByGroup);
+
+      // Fetch migration treemap data for year
+      yearTreemap = await fetchData(dataYearTreemap);
 
       loading = false;
     } catch (error) {
@@ -299,6 +305,9 @@
             height={innerHeight}
             {calcVw}
             {xScale}
+            {yearTreemap}
+            {colorMapping}
+            {formatNumber}
           />
         {/if}
       </div>

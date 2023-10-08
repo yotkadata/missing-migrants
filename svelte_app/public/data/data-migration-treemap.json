@@ -1,0 +1,895 @@
+{
+    "name": "treemap",
+    "children": [
+        {
+            "name": "2014",
+            "children": [
+                {
+                    "name": "Africa",
+                    "children": [
+                        {
+                            "name": "Eastern Africa",
+                            "value": 509.0
+                        },
+                        {
+                            "name": "Middle Africa",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Northern Africa",
+                            "value": 90.0
+                        },
+                        {
+                            "name": "Southern Africa",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Western Africa",
+                            "value": 0.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Americas",
+                    "children": [
+                        {
+                            "name": "Caribbean",
+                            "value": 73.0
+                        },
+                        {
+                            "name": "Central America",
+                            "value": 117.0
+                        },
+                        {
+                            "name": "North America",
+                            "value": 303.0
+                        },
+                        {
+                            "name": "South America",
+                            "value": 0.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Asia",
+                    "children": [
+                        {
+                            "name": "Central Asia",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Eastern Asia",
+                            "value": 9.0
+                        },
+                        {
+                            "name": "South-eastern Asia",
+                            "value": 842.0
+                        },
+                        {
+                            "name": "Southern Asia",
+                            "value": 2.0
+                        },
+                        {
+                            "name": "Western Asia",
+                            "value": 65.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Europe",
+                    "children": [
+                        {
+                            "name": "Europe",
+                            "value": 22.0
+                        },
+                        {
+                            "name": "Mediterranean",
+                            "value": 3289.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "2015",
+            "children": [
+                {
+                    "name": "Africa",
+                    "children": [
+                        {
+                            "name": "Eastern Africa",
+                            "value": 155.0
+                        },
+                        {
+                            "name": "Middle Africa",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Northern Africa",
+                            "value": 736.0
+                        },
+                        {
+                            "name": "Southern Africa",
+                            "value": 3.0
+                        },
+                        {
+                            "name": "Western Africa",
+                            "value": 89.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Americas",
+                    "children": [
+                        {
+                            "name": "Caribbean",
+                            "value": 68.0
+                        },
+                        {
+                            "name": "Central America",
+                            "value": 152.0
+                        },
+                        {
+                            "name": "North America",
+                            "value": 305.0
+                        },
+                        {
+                            "name": "South America",
+                            "value": 2.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Asia",
+                    "children": [
+                        {
+                            "name": "Central Asia",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Eastern Asia",
+                            "value": 15.0
+                        },
+                        {
+                            "name": "South-eastern Asia",
+                            "value": 907.0
+                        },
+                        {
+                            "name": "Southern Asia",
+                            "value": 22.0
+                        },
+                        {
+                            "name": "Western Asia",
+                            "value": 98.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Europe",
+                    "children": [
+                        {
+                            "name": "Europe",
+                            "value": 142.0
+                        },
+                        {
+                            "name": "Mediterranean",
+                            "value": 4055.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "2016",
+            "children": [
+                {
+                    "name": "Africa",
+                    "children": [
+                        {
+                            "name": "Eastern Africa",
+                            "value": 262.0
+                        },
+                        {
+                            "name": "Middle Africa",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Northern Africa",
+                            "value": 1399.0
+                        },
+                        {
+                            "name": "Southern Africa",
+                            "value": 15.0
+                        },
+                        {
+                            "name": "Western Africa",
+                            "value": 96.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Americas",
+                    "children": [
+                        {
+                            "name": "Caribbean",
+                            "value": 115.0
+                        },
+                        {
+                            "name": "Central America",
+                            "value": 242.0
+                        },
+                        {
+                            "name": "North America",
+                            "value": 344.0
+                        },
+                        {
+                            "name": "South America",
+                            "value": 45.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Asia",
+                    "children": [
+                        {
+                            "name": "Central Asia",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Eastern Asia",
+                            "value": 3.0
+                        },
+                        {
+                            "name": "South-eastern Asia",
+                            "value": 189.0
+                        },
+                        {
+                            "name": "Southern Asia",
+                            "value": 14.0
+                        },
+                        {
+                            "name": "Western Asia",
+                            "value": 153.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Europe",
+                    "children": [
+                        {
+                            "name": "Europe",
+                            "value": 65.0
+                        },
+                        {
+                            "name": "Mediterranean",
+                            "value": 5136.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "2017",
+            "children": [
+                {
+                    "name": "Africa",
+                    "children": [
+                        {
+                            "name": "Eastern Africa",
+                            "value": 131.0
+                        },
+                        {
+                            "name": "Middle Africa",
+                            "value": 4.0
+                        },
+                        {
+                            "name": "Northern Africa",
+                            "value": 1030.0
+                        },
+                        {
+                            "name": "Southern Africa",
+                            "value": 2.0
+                        },
+                        {
+                            "name": "Western Africa",
+                            "value": 506.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Americas",
+                    "children": [
+                        {
+                            "name": "Caribbean",
+                            "value": 170.0
+                        },
+                        {
+                            "name": "Central America",
+                            "value": 160.0
+                        },
+                        {
+                            "name": "North America",
+                            "value": 348.0
+                        },
+                        {
+                            "name": "South America",
+                            "value": 0.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Asia",
+                    "children": [
+                        {
+                            "name": "Central Asia",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Eastern Asia",
+                            "value": 1.0
+                        },
+                        {
+                            "name": "South-eastern Asia",
+                            "value": 309.0
+                        },
+                        {
+                            "name": "Southern Asia",
+                            "value": 223.0
+                        },
+                        {
+                            "name": "Western Asia",
+                            "value": 208.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Europe",
+                    "children": [
+                        {
+                            "name": "Europe",
+                            "value": 59.0
+                        },
+                        {
+                            "name": "Mediterranean",
+                            "value": 3139.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "2018",
+            "children": [
+                {
+                    "name": "Africa",
+                    "children": [
+                        {
+                            "name": "Eastern Africa",
+                            "value": 252.0
+                        },
+                        {
+                            "name": "Middle Africa",
+                            "value": 87.0
+                        },
+                        {
+                            "name": "Northern Africa",
+                            "value": 676.0
+                        },
+                        {
+                            "name": "Southern Africa",
+                            "value": 1.0
+                        },
+                        {
+                            "name": "Western Africa",
+                            "value": 451.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Americas",
+                    "children": [
+                        {
+                            "name": "Caribbean",
+                            "value": 39.0
+                        },
+                        {
+                            "name": "Central America",
+                            "value": 146.0
+                        },
+                        {
+                            "name": "North America",
+                            "value": 381.0
+                        },
+                        {
+                            "name": "South America",
+                            "value": 30.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Asia",
+                    "children": [
+                        {
+                            "name": "Central Asia",
+                            "value": 52.0
+                        },
+                        {
+                            "name": "Eastern Asia",
+                            "value": 3.0
+                        },
+                        {
+                            "name": "South-eastern Asia",
+                            "value": 100.0
+                        },
+                        {
+                            "name": "Southern Asia",
+                            "value": 34.0
+                        },
+                        {
+                            "name": "Western Asia",
+                            "value": 302.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Europe",
+                    "children": [
+                        {
+                            "name": "Europe",
+                            "value": 118.0
+                        },
+                        {
+                            "name": "Mediterranean",
+                            "value": 2337.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "2019",
+            "children": [
+                {
+                    "name": "Africa",
+                    "children": [
+                        {
+                            "name": "Eastern Africa",
+                            "value": 139.0
+                        },
+                        {
+                            "name": "Middle Africa",
+                            "value": 71.0
+                        },
+                        {
+                            "name": "Northern Africa",
+                            "value": 859.0
+                        },
+                        {
+                            "name": "Southern Africa",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Western Africa",
+                            "value": 842.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Americas",
+                    "children": [
+                        {
+                            "name": "Caribbean",
+                            "value": 160.0
+                        },
+                        {
+                            "name": "Central America",
+                            "value": 236.0
+                        },
+                        {
+                            "name": "North America",
+                            "value": 419.0
+                        },
+                        {
+                            "name": "South America",
+                            "value": 39.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Asia",
+                    "children": [
+                        {
+                            "name": "Central Asia",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Eastern Asia",
+                            "value": 5.0
+                        },
+                        {
+                            "name": "South-eastern Asia",
+                            "value": 241.0
+                        },
+                        {
+                            "name": "Southern Asia",
+                            "value": 167.0
+                        },
+                        {
+                            "name": "Western Asia",
+                            "value": 194.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Europe",
+                    "children": [
+                        {
+                            "name": "Europe",
+                            "value": 160.0
+                        },
+                        {
+                            "name": "Mediterranean",
+                            "value": 1885.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "2020",
+            "children": [
+                {
+                    "name": "Africa",
+                    "children": [
+                        {
+                            "name": "Eastern Africa",
+                            "value": 208.0
+                        },
+                        {
+                            "name": "Middle Africa",
+                            "value": 19.0
+                        },
+                        {
+                            "name": "Northern Africa",
+                            "value": 604.0
+                        },
+                        {
+                            "name": "Southern Africa",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Western Africa",
+                            "value": 443.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Americas",
+                    "children": [
+                        {
+                            "name": "Caribbean",
+                            "value": 163.0
+                        },
+                        {
+                            "name": "Central America",
+                            "value": 154.0
+                        },
+                        {
+                            "name": "North America",
+                            "value": 366.0
+                        },
+                        {
+                            "name": "South America",
+                            "value": 99.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Asia",
+                    "children": [
+                        {
+                            "name": "Central Asia",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Eastern Asia",
+                            "value": 2.0
+                        },
+                        {
+                            "name": "South-eastern Asia",
+                            "value": 151.0
+                        },
+                        {
+                            "name": "Southern Asia",
+                            "value": 421.0
+                        },
+                        {
+                            "name": "Western Asia",
+                            "value": 122.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Europe",
+                    "children": [
+                        {
+                            "name": "Europe",
+                            "value": 84.0
+                        },
+                        {
+                            "name": "Mediterranean",
+                            "value": 1450.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "2021",
+            "children": [
+                {
+                    "name": "Africa",
+                    "children": [
+                        {
+                            "name": "Eastern Africa",
+                            "value": 109.0
+                        },
+                        {
+                            "name": "Middle Africa",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Northern Africa",
+                            "value": 1429.0
+                        },
+                        {
+                            "name": "Southern Africa",
+                            "value": 76.0
+                        },
+                        {
+                            "name": "Western Africa",
+                            "value": 146.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Americas",
+                    "children": [
+                        {
+                            "name": "Caribbean",
+                            "value": 245.0
+                        },
+                        {
+                            "name": "Central America",
+                            "value": 323.0
+                        },
+                        {
+                            "name": "North America",
+                            "value": 597.0
+                        },
+                        {
+                            "name": "South America",
+                            "value": 151.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Asia",
+                    "children": [
+                        {
+                            "name": "Central Asia",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Eastern Asia",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "South-eastern Asia",
+                            "value": 77.0
+                        },
+                        {
+                            "name": "Southern Asia",
+                            "value": 717.0
+                        },
+                        {
+                            "name": "Western Asia",
+                            "value": 99.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Europe",
+                    "children": [
+                        {
+                            "name": "Europe",
+                            "value": 135.0
+                        },
+                        {
+                            "name": "Mediterranean",
+                            "value": 2047.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "2022",
+            "children": [
+                {
+                    "name": "Africa",
+                    "children": [
+                        {
+                            "name": "Eastern Africa",
+                            "value": 62.0
+                        },
+                        {
+                            "name": "Middle Africa",
+                            "value": 33.0
+                        },
+                        {
+                            "name": "Northern Africa",
+                            "value": 719.0
+                        },
+                        {
+                            "name": "Southern Africa",
+                            "value": 64.0
+                        },
+                        {
+                            "name": "Western Africa",
+                            "value": 115.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Americas",
+                    "children": [
+                        {
+                            "name": "Caribbean",
+                            "value": 350.0
+                        },
+                        {
+                            "name": "Central America",
+                            "value": 484.0
+                        },
+                        {
+                            "name": "North America",
+                            "value": 565.0
+                        },
+                        {
+                            "name": "South America",
+                            "value": 58.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Asia",
+                    "children": [
+                        {
+                            "name": "Central Asia",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Eastern Asia",
+                            "value": 1.0
+                        },
+                        {
+                            "name": "South-eastern Asia",
+                            "value": 297.0
+                        },
+                        {
+                            "name": "Southern Asia",
+                            "value": 882.0
+                        },
+                        {
+                            "name": "Western Asia",
+                            "value": 887.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Europe",
+                    "children": [
+                        {
+                            "name": "Europe",
+                            "value": 158.0
+                        },
+                        {
+                            "name": "Mediterranean",
+                            "value": 2411.0
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "2023",
+            "children": [
+                {
+                    "name": "Africa",
+                    "children": [
+                        {
+                            "name": "Eastern Africa",
+                            "value": 191.0
+                        },
+                        {
+                            "name": "Middle Africa",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Northern Africa",
+                            "value": 589.0
+                        },
+                        {
+                            "name": "Southern Africa",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Western Africa",
+                            "value": 363.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Americas",
+                    "children": [
+                        {
+                            "name": "Caribbean",
+                            "value": 160.0
+                        },
+                        {
+                            "name": "Central America",
+                            "value": 424.0
+                        },
+                        {
+                            "name": "North America",
+                            "value": 182.0
+                        },
+                        {
+                            "name": "South America",
+                            "value": 58.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Asia",
+                    "children": [
+                        {
+                            "name": "Central Asia",
+                            "value": 0.0
+                        },
+                        {
+                            "name": "Eastern Asia",
+                            "value": 9.0
+                        },
+                        {
+                            "name": "South-eastern Asia",
+                            "value": 54.0
+                        },
+                        {
+                            "name": "Southern Asia",
+                            "value": 11.0
+                        },
+                        {
+                            "name": "Western Asia",
+                            "value": 27.0
+                        }
+                    ]
+                },
+                {
+                    "name": "Europe",
+                    "children": [
+                        {
+                            "name": "Europe",
+                            "value": 112.0
+                        },
+                        {
+                            "name": "Mediterranean",
+                            "value": 2379.0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
