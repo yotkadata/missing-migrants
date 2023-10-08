@@ -2,6 +2,7 @@
   export let yearHovered;
   export let xScale;
   export let height;
+  export let circleHovered;
 
   $: ticks = xScale.ticks();
 
@@ -18,9 +19,11 @@
       transform="translate({xScale(tick)}, 0)"
       on:mouseover={() => {
         yearHovered = tick.getFullYear();
+        circleHovered = false;
       }}
       on:focus={() => {
         yearHovered = tick.getFullYear();
+        circleHovered = false;
       }}
       on:mouseleave={() => {
         yearHovered = false;

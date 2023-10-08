@@ -234,7 +234,12 @@
             class="inner-chart"
             transform="translate({margin.left}, {margin.top})"
           >
-            <AxisX bind:yearHovered {xScale} height={innerHeight} />
+            <AxisX
+              bind:yearHovered
+              bind:circleHovered
+              {xScale}
+              height={innerHeight}
+            />
             <Legend
               {yScale}
               {radiusScale}
