@@ -313,6 +313,7 @@
             {yearTreemap}
             {colorMapping}
             {formatNumber}
+            {formatPct}
           />
         {/if}
       </div>

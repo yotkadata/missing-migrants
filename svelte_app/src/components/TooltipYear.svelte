@@ -9,9 +9,10 @@
   export let yearTreemap;
   export let colorMapping;
   export let formatNumber;
+  export let formatPct;
 
-  let tooltipWidth = calcVw(1200);
-  let tooltipHeight = tooltipWidth;
+  let tooltipHeight = height;
+  let tooltipWidth = (tooltipHeight / 3) * 4;
 
   let toolTipMargin = {
     top: calcVw(10),
@@ -70,6 +71,7 @@
     height={tooltipInnerHeight}
     {colorMapping}
     {formatNumber}
+    {formatPct}
   />
 </div>
 

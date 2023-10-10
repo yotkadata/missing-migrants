@@ -29,7 +29,12 @@
         yearHovered = false;
       }}
     >
-      <text x="3" y={height}>{tick.getFullYear()}</text>
+      <text
+        x="3"
+        y={height}
+        class={yearHovered === tick.getFullYear() ? "hovered" : ""}
+        >{tick.getFullYear()}</text
+      >
       <line
         x1="0"
         x2="0"
@@ -46,5 +51,10 @@
     font-size: 0.78125vw; /* 20px at 2560 */
     fill: rgba(255, 255, 255, 0.8);
     font-weight: 400;
+  }
+
+  .tick text.hovered {
+    fill: rgba(255, 255, 255, 1);
+    font-weight: 800;
   }
 </style>
