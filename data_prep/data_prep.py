@@ -194,7 +194,7 @@ def export_treemap_to_json(data: pd.DataFrame) -> None:
 
     # Calculate percentage of each year's total
     df_yg["pct"] = round(
-        df_yg["value"] / df_yg.groupby("year")["value"].transform("sum") * 100, 2
+        df_yg["value"] / df_yg.groupby("year")["value"].transform("sum"), 4
     )
 
     region_mapping = {
