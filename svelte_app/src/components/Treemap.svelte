@@ -53,7 +53,7 @@
             y="{(nodeIndex === nodes.length - 1) * 0.3 +
               1.1 +
               nodeIndex * 0.9}em"
-            fill-opacity={nodeIndex === nodes.length - 1 ? 0.7 : null}
+            class={nodeIndex === nodes.length - 1 ? "text" : "title"}
           >
             {node}
           </tspan>
@@ -62,3 +62,15 @@
     </g>
   {/each}
 </svg>
+
+<style>
+  text {
+    font-size: 0.78125vw; /* 20px at 2560 */
+  }
+  text .title {
+    font-weight: 800;
+  }
+  text .text {
+    fill-opacity: 0.7;
+  }
+</style>
