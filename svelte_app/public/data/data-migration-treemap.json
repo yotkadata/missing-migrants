@@ -9,23 +9,28 @@
                     "children": [
                         {
                             "name": "Eastern Africa",
-                            "value": 509.0
+                            "value": "509",
+                            "pct": "0.0957"
                         },
                         {
                             "name": "Middle Africa",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Northern Africa",
-                            "value": 90.0
+                            "value": "90",
+                            "pct": "0.0169"
                         },
                         {
                             "name": "Southern Africa",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Western Africa",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         }
                     ]
                 },
@@ -34,19 +39,23 @@
                     "children": [
                         {
                             "name": "Caribbean",
-                            "value": 73.0
+                            "value": "73",
+                            "pct": "0.0137"
                         },
                         {
                             "name": "Central America",
-                            "value": 117.0
+                            "value": "117",
+                            "pct": "0.022"
                         },
                         {
                             "name": "North America",
-                            "value": 303.0
+                            "value": "303",
+                            "pct": "0.0569"
                         },
                         {
                             "name": "South America",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         }
                     ]
                 },
@@ -55,23 +64,28 @@
                     "children": [
                         {
                             "name": "Central Asia",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Eastern Asia",
-                            "value": 9.0
+                            "value": "9",
+                            "pct": "0.0017"
                         },
                         {
                             "name": "South-eastern Asia",
-                            "value": 842.0
+                            "value": "842",
+                            "pct": "0.1582"
                         },
                         {
                             "name": "Southern Asia",
-                            "value": 2.0
+                            "value": "2",
+                            "pct": "0.0004"
                         },
                         {
                             "name": "Western Asia",
-                            "value": 65.0
+                            "value": "65",
+                            "pct": "0.0122"
                         }
                     ]
                 },
@@ -80,11 +94,13 @@
                     "children": [
                         {
                             "name": "Europe",
-                            "value": 22.0
+                            "value": "22",
+                            "pct": "0.0041"
                         },
                         {
                             "name": "Mediterranean",
-                            "value": 3289.0
+                            "value": "3289",
+                            "pct": "0.6181"
                         }
                     ]
                 }
@@ -98,23 +114,28 @@
                     "children": [
                         {
                             "name": "Eastern Africa",
-                            "value": 155.0
+                            "value": "155",
+                            "pct": "0.023"
                         },
                         {
                             "name": "Middle Africa",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Northern Africa",
-                            "value": 736.0
+                            "value": "736",
+                            "pct": "0.1091"
                         },
                         {
                             "name": "Southern Africa",
-                            "value": 3.0
+                            "value": "3",
+                            "pct": "0.0004"
                         },
                         {
                             "name": "Western Africa",
-                            "value": 89.0
+                            "value": "89",
+                            "pct": "0.0132"
                         }
                     ]
                 },
@@ -123,19 +144,23 @@
                     "children": [
                         {
                             "name": "Caribbean",
-                            "value": 68.0
+                            "value": "68",
+                            "pct": "0.0101"
                         },
                         {
                             "name": "Central America",
-                            "value": 152.0
+                            "value": "152",
+                            "pct": "0.0225"
                         },
                         {
                             "name": "North America",
-                            "value": 305.0
+                            "value": "305",
+                            "pct": "0.0452"
                         },
                         {
                             "name": "South America",
-                            "value": 2.0
+                            "value": "2",
+                            "pct": "0.0003"
                         }
                     ]
                 },
@@ -144,23 +169,28 @@
                     "children": [
                         {
                             "name": "Central Asia",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Eastern Asia",
-                            "value": 15.0
+                            "value": "15",
+                            "pct": "0.0022"
                         },
                         {
                             "name": "South-eastern Asia",
-                            "value": 907.0
+                            "value": "907",
+                            "pct": "0.1344"
                         },
                         {
                             "name": "Southern Asia",
-                            "value": 22.0
+                            "value": "22",
+                            "pct": "0.0033"
                         },
                         {
                             "name": "Western Asia",
-                            "value": 98.0
+                            "value": "98",
+                            "pct": "0.0145"
                         }
                     ]
                 },
@@ -169,11 +199,13 @@
                     "children": [
                         {
                             "name": "Europe",
-                            "value": 142.0
+                            "value": "142",
+                            "pct": "0.021"
                         },
                         {
                             "name": "Mediterranean",
-                            "value": 4055.0
+                            "value": "4055",
+                            "pct": "0.6008"
                         }
                     ]
                 }
@@ -187,23 +219,28 @@
                     "children": [
                         {
                             "name": "Eastern Africa",
-                            "value": 262.0
+                            "value": "262",
+                            "pct": "0.0324"
                         },
                         {
                             "name": "Middle Africa",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Northern Africa",
-                            "value": 1399.0
+                            "value": "1399",
+                            "pct": "0.1732"
                         },
                         {
                             "name": "Southern Africa",
-                            "value": 15.0
+                            "value": "15",
+                            "pct": "0.0019"
                         },
                         {
                             "name": "Western Africa",
-                            "value": 96.0
+                            "value": "96",
+                            "pct": "0.0119"
                         }
                     ]
                 },
@@ -212,19 +249,23 @@
                     "children": [
                         {
                             "name": "Caribbean",
-                            "value": 115.0
+                            "value": "115",
+                            "pct": "0.0142"
                         },
                         {
                             "name": "Central America",
-                            "value": 242.0
+                            "value": "242",
+                            "pct": "0.03"
                         },
                         {
                             "name": "North America",
-                            "value": 344.0
+                            "value": "344",
+                            "pct": "0.0426"
                         },
                         {
                             "name": "South America",
-                            "value": 45.0
+                            "value": "45",
+                            "pct": "0.0056"
                         }
                     ]
                 },
@@ -233,23 +274,28 @@
                     "children": [
                         {
                             "name": "Central Asia",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Eastern Asia",
-                            "value": 3.0
+                            "value": "3",
+                            "pct": "0.0004"
                         },
                         {
                             "name": "South-eastern Asia",
-                            "value": 189.0
+                            "value": "189",
+                            "pct": "0.0234"
                         },
                         {
                             "name": "Southern Asia",
-                            "value": 14.0
+                            "value": "14",
+                            "pct": "0.0017"
                         },
                         {
                             "name": "Western Asia",
-                            "value": 153.0
+                            "value": "153",
+                            "pct": "0.0189"
                         }
                     ]
                 },
@@ -258,11 +304,13 @@
                     "children": [
                         {
                             "name": "Europe",
-                            "value": 65.0
+                            "value": "65",
+                            "pct": "0.008"
                         },
                         {
                             "name": "Mediterranean",
-                            "value": 5136.0
+                            "value": "5136",
+                            "pct": "0.6358"
                         }
                     ]
                 }
@@ -276,23 +324,28 @@
                     "children": [
                         {
                             "name": "Eastern Africa",
-                            "value": 131.0
+                            "value": "131",
+                            "pct": "0.0208"
                         },
                         {
                             "name": "Middle Africa",
-                            "value": 4.0
+                            "value": "4",
+                            "pct": "0.0006"
                         },
                         {
                             "name": "Northern Africa",
-                            "value": 1030.0
+                            "value": "1030",
+                            "pct": "0.1638"
                         },
                         {
                             "name": "Southern Africa",
-                            "value": 2.0
+                            "value": "2",
+                            "pct": "0.0003"
                         },
                         {
                             "name": "Western Africa",
-                            "value": 506.0
+                            "value": "506",
+                            "pct": "0.0804"
                         }
                     ]
                 },
@@ -301,19 +354,23 @@
                     "children": [
                         {
                             "name": "Caribbean",
-                            "value": 170.0
+                            "value": "170",
+                            "pct": "0.027"
                         },
                         {
                             "name": "Central America",
-                            "value": 160.0
+                            "value": "160",
+                            "pct": "0.0254"
                         },
                         {
                             "name": "North America",
-                            "value": 348.0
+                            "value": "348",
+                            "pct": "0.0553"
                         },
                         {
                             "name": "South America",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         }
                     ]
                 },
@@ -322,23 +379,28 @@
                     "children": [
                         {
                             "name": "Central Asia",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Eastern Asia",
-                            "value": 1.0
+                            "value": "1",
+                            "pct": "0.0002"
                         },
                         {
                             "name": "South-eastern Asia",
-                            "value": 309.0
+                            "value": "309",
+                            "pct": "0.0491"
                         },
                         {
                             "name": "Southern Asia",
-                            "value": 223.0
+                            "value": "223",
+                            "pct": "0.0355"
                         },
                         {
                             "name": "Western Asia",
-                            "value": 208.0
+                            "value": "208",
+                            "pct": "0.0331"
                         }
                     ]
                 },
@@ -347,11 +409,13 @@
                     "children": [
                         {
                             "name": "Europe",
-                            "value": 59.0
+                            "value": "59",
+                            "pct": "0.0094"
                         },
                         {
                             "name": "Mediterranean",
-                            "value": 3139.0
+                            "value": "3139",
+                            "pct": "0.499"
                         }
                     ]
                 }
@@ -365,23 +429,28 @@
                     "children": [
                         {
                             "name": "Eastern Africa",
-                            "value": 252.0
+                            "value": "252",
+                            "pct": "0.0503"
                         },
                         {
                             "name": "Middle Africa",
-                            "value": 87.0
+                            "value": "87",
+                            "pct": "0.0174"
                         },
                         {
                             "name": "Northern Africa",
-                            "value": 676.0
+                            "value": "676",
+                            "pct": "0.135"
                         },
                         {
                             "name": "Southern Africa",
-                            "value": 1.0
+                            "value": "1",
+                            "pct": "0.0002"
                         },
                         {
                             "name": "Western Africa",
-                            "value": 451.0
+                            "value": "451",
+                            "pct": "0.09"
                         }
                     ]
                 },
@@ -390,19 +459,23 @@
                     "children": [
                         {
                             "name": "Caribbean",
-                            "value": 39.0
+                            "value": "39",
+                            "pct": "0.0078"
                         },
                         {
                             "name": "Central America",
-                            "value": 146.0
+                            "value": "146",
+                            "pct": "0.0291"
                         },
                         {
                             "name": "North America",
-                            "value": 381.0
+                            "value": "381",
+                            "pct": "0.0761"
                         },
                         {
                             "name": "South America",
-                            "value": 30.0
+                            "value": "30",
+                            "pct": "0.006"
                         }
                     ]
                 },
@@ -411,23 +484,28 @@
                     "children": [
                         {
                             "name": "Central Asia",
-                            "value": 52.0
+                            "value": "52",
+                            "pct": "0.0104"
                         },
                         {
                             "name": "Eastern Asia",
-                            "value": 3.0
+                            "value": "3",
+                            "pct": "0.0006"
                         },
                         {
                             "name": "South-eastern Asia",
-                            "value": 100.0
+                            "value": "100",
+                            "pct": "0.02"
                         },
                         {
                             "name": "Southern Asia",
-                            "value": 34.0
+                            "value": "34",
+                            "pct": "0.0068"
                         },
                         {
                             "name": "Western Asia",
-                            "value": 302.0
+                            "value": "302",
+                            "pct": "0.0603"
                         }
                     ]
                 },
@@ -436,11 +514,13 @@
                     "children": [
                         {
                             "name": "Europe",
-                            "value": 118.0
+                            "value": "118",
+                            "pct": "0.0236"
                         },
                         {
                             "name": "Mediterranean",
-                            "value": 2337.0
+                            "value": "2337",
+                            "pct": "0.4666"
                         }
                     ]
                 }
@@ -454,23 +534,28 @@
                     "children": [
                         {
                             "name": "Eastern Africa",
-                            "value": 139.0
+                            "value": "139",
+                            "pct": "0.0257"
                         },
                         {
                             "name": "Middle Africa",
-                            "value": 71.0
+                            "value": "71",
+                            "pct": "0.0131"
                         },
                         {
                             "name": "Northern Africa",
-                            "value": 859.0
+                            "value": "859",
+                            "pct": "0.1586"
                         },
                         {
                             "name": "Southern Africa",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Western Africa",
-                            "value": 842.0
+                            "value": "842",
+                            "pct": "0.1554"
                         }
                     ]
                 },
@@ -479,19 +564,23 @@
                     "children": [
                         {
                             "name": "Caribbean",
-                            "value": 160.0
+                            "value": "160",
+                            "pct": "0.0295"
                         },
                         {
                             "name": "Central America",
-                            "value": 236.0
+                            "value": "236",
+                            "pct": "0.0436"
                         },
                         {
                             "name": "North America",
-                            "value": 419.0
+                            "value": "419",
+                            "pct": "0.0773"
                         },
                         {
                             "name": "South America",
-                            "value": 39.0
+                            "value": "39",
+                            "pct": "0.0072"
                         }
                     ]
                 },
@@ -500,23 +589,28 @@
                     "children": [
                         {
                             "name": "Central Asia",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Eastern Asia",
-                            "value": 5.0
+                            "value": "5",
+                            "pct": "0.0009"
                         },
                         {
                             "name": "South-eastern Asia",
-                            "value": 241.0
+                            "value": "241",
+                            "pct": "0.0445"
                         },
                         {
                             "name": "Southern Asia",
-                            "value": 167.0
+                            "value": "167",
+                            "pct": "0.0308"
                         },
                         {
                             "name": "Western Asia",
-                            "value": 194.0
+                            "value": "194",
+                            "pct": "0.0358"
                         }
                     ]
                 },
@@ -525,11 +619,13 @@
                     "children": [
                         {
                             "name": "Europe",
-                            "value": 160.0
+                            "value": "160",
+                            "pct": "0.0295"
                         },
                         {
                             "name": "Mediterranean",
-                            "value": 1885.0
+                            "value": "1885",
+                            "pct": "0.348"
                         }
                     ]
                 }
@@ -543,23 +639,28 @@
                     "children": [
                         {
                             "name": "Eastern Africa",
-                            "value": 208.0
+                            "value": "208",
+                            "pct": "0.0485"
                         },
                         {
                             "name": "Middle Africa",
-                            "value": 19.0
+                            "value": "19",
+                            "pct": "0.0044"
                         },
                         {
                             "name": "Northern Africa",
-                            "value": 604.0
+                            "value": "604",
+                            "pct": "0.1409"
                         },
                         {
                             "name": "Southern Africa",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Western Africa",
-                            "value": 443.0
+                            "value": "443",
+                            "pct": "0.1034"
                         }
                     ]
                 },
@@ -568,19 +669,23 @@
                     "children": [
                         {
                             "name": "Caribbean",
-                            "value": 163.0
+                            "value": "163",
+                            "pct": "0.038"
                         },
                         {
                             "name": "Central America",
-                            "value": 154.0
+                            "value": "154",
+                            "pct": "0.0359"
                         },
                         {
                             "name": "North America",
-                            "value": 366.0
+                            "value": "366",
+                            "pct": "0.0854"
                         },
                         {
                             "name": "South America",
-                            "value": 99.0
+                            "value": "99",
+                            "pct": "0.0231"
                         }
                     ]
                 },
@@ -589,23 +694,28 @@
                     "children": [
                         {
                             "name": "Central Asia",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Eastern Asia",
-                            "value": 2.0
+                            "value": "2",
+                            "pct": "0.0005"
                         },
                         {
                             "name": "South-eastern Asia",
-                            "value": 151.0
+                            "value": "151",
+                            "pct": "0.0352"
                         },
                         {
                             "name": "Southern Asia",
-                            "value": 421.0
+                            "value": "421",
+                            "pct": "0.0982"
                         },
                         {
                             "name": "Western Asia",
-                            "value": 122.0
+                            "value": "122",
+                            "pct": "0.0285"
                         }
                     ]
                 },
@@ -614,11 +724,13 @@
                     "children": [
                         {
                             "name": "Europe",
-                            "value": 84.0
+                            "value": "84",
+                            "pct": "0.0196"
                         },
                         {
                             "name": "Mediterranean",
-                            "value": 1450.0
+                            "value": "1450",
+                            "pct": "0.3383"
                         }
                     ]
                 }
@@ -632,23 +744,28 @@
                     "children": [
                         {
                             "name": "Eastern Africa",
-                            "value": 109.0
+                            "value": "109",
+                            "pct": "0.0177"
                         },
                         {
                             "name": "Middle Africa",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Northern Africa",
-                            "value": 1429.0
+                            "value": "1429",
+                            "pct": "0.2323"
                         },
                         {
                             "name": "Southern Africa",
-                            "value": 76.0
+                            "value": "76",
+                            "pct": "0.0124"
                         },
                         {
                             "name": "Western Africa",
-                            "value": 146.0
+                            "value": "146",
+                            "pct": "0.0237"
                         }
                     ]
                 },
@@ -657,19 +774,23 @@
                     "children": [
                         {
                             "name": "Caribbean",
-                            "value": 245.0
+                            "value": "245",
+                            "pct": "0.0398"
                         },
                         {
                             "name": "Central America",
-                            "value": 323.0
+                            "value": "323",
+                            "pct": "0.0525"
                         },
                         {
                             "name": "North America",
-                            "value": 597.0
+                            "value": "597",
+                            "pct": "0.0971"
                         },
                         {
                             "name": "South America",
-                            "value": 151.0
+                            "value": "151",
+                            "pct": "0.0245"
                         }
                     ]
                 },
@@ -678,23 +799,28 @@
                     "children": [
                         {
                             "name": "Central Asia",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Eastern Asia",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "South-eastern Asia",
-                            "value": 77.0
+                            "value": "77",
+                            "pct": "0.0125"
                         },
                         {
                             "name": "Southern Asia",
-                            "value": 717.0
+                            "value": "717",
+                            "pct": "0.1166"
                         },
                         {
                             "name": "Western Asia",
-                            "value": 99.0
+                            "value": "99",
+                            "pct": "0.0161"
                         }
                     ]
                 },
@@ -703,11 +829,13 @@
                     "children": [
                         {
                             "name": "Europe",
-                            "value": 135.0
+                            "value": "135",
+                            "pct": "0.0219"
                         },
                         {
                             "name": "Mediterranean",
-                            "value": 2047.0
+                            "value": "2047",
+                            "pct": "0.3328"
                         }
                     ]
                 }
@@ -721,23 +849,28 @@
                     "children": [
                         {
                             "name": "Eastern Africa",
-                            "value": 62.0
+                            "value": "62",
+                            "pct": "0.0087"
                         },
                         {
                             "name": "Middle Africa",
-                            "value": 33.0
+                            "value": "33",
+                            "pct": "0.0047"
                         },
                         {
                             "name": "Northern Africa",
-                            "value": 719.0
+                            "value": "719",
+                            "pct": "0.1015"
                         },
                         {
                             "name": "Southern Africa",
-                            "value": 64.0
+                            "value": "64",
+                            "pct": "0.009"
                         },
                         {
                             "name": "Western Africa",
-                            "value": 115.0
+                            "value": "115",
+                            "pct": "0.0162"
                         }
                     ]
                 },
@@ -746,19 +879,23 @@
                     "children": [
                         {
                             "name": "Caribbean",
-                            "value": 350.0
+                            "value": "350",
+                            "pct": "0.0494"
                         },
                         {
                             "name": "Central America",
-                            "value": 484.0
+                            "value": "484",
+                            "pct": "0.0683"
                         },
                         {
                             "name": "North America",
-                            "value": 565.0
+                            "value": "565",
+                            "pct": "0.0797"
                         },
                         {
                             "name": "South America",
-                            "value": 58.0
+                            "value": "58",
+                            "pct": "0.0082"
                         }
                     ]
                 },
@@ -767,23 +904,28 @@
                     "children": [
                         {
                             "name": "Central Asia",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Eastern Asia",
-                            "value": 1.0
+                            "value": "1",
+                            "pct": "0.0001"
                         },
                         {
                             "name": "South-eastern Asia",
-                            "value": 297.0
+                            "value": "297",
+                            "pct": "0.0419"
                         },
                         {
                             "name": "Southern Asia",
-                            "value": 882.0
+                            "value": "882",
+                            "pct": "0.1245"
                         },
                         {
                             "name": "Western Asia",
-                            "value": 887.0
+                            "value": "887",
+                            "pct": "0.1252"
                         }
                     ]
                 },
@@ -792,11 +934,13 @@
                     "children": [
                         {
                             "name": "Europe",
-                            "value": 158.0
+                            "value": "158",
+                            "pct": "0.0223"
                         },
                         {
                             "name": "Mediterranean",
-                            "value": 2411.0
+                            "value": "2411",
+                            "pct": "0.3402"
                         }
                     ]
                 }
@@ -810,23 +954,28 @@
                     "children": [
                         {
                             "name": "Eastern Africa",
-                            "value": 191.0
+                            "value": "191",
+                            "pct": "0.0419"
                         },
                         {
                             "name": "Middle Africa",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Northern Africa",
-                            "value": 589.0
+                            "value": "589",
+                            "pct": "0.1292"
                         },
                         {
                             "name": "Southern Africa",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Western Africa",
-                            "value": 363.0
+                            "value": "363",
+                            "pct": "0.0796"
                         }
                     ]
                 },
@@ -835,19 +984,23 @@
                     "children": [
                         {
                             "name": "Caribbean",
-                            "value": 160.0
+                            "value": "160",
+                            "pct": "0.0351"
                         },
                         {
                             "name": "Central America",
-                            "value": 424.0
+                            "value": "424",
+                            "pct": "0.093"
                         },
                         {
                             "name": "North America",
-                            "value": 182.0
+                            "value": "182",
+                            "pct": "0.0399"
                         },
                         {
                             "name": "South America",
-                            "value": 58.0
+                            "value": "58",
+                            "pct": "0.0127"
                         }
                     ]
                 },
@@ -856,23 +1009,28 @@
                     "children": [
                         {
                             "name": "Central Asia",
-                            "value": 0.0
+                            "value": "0",
+                            "pct": "0"
                         },
                         {
                             "name": "Eastern Asia",
-                            "value": 9.0
+                            "value": "9",
+                            "pct": "0.002"
                         },
                         {
                             "name": "South-eastern Asia",
-                            "value": 54.0
+                            "value": "54",
+                            "pct": "0.0118"
                         },
                         {
                             "name": "Southern Asia",
-                            "value": 11.0
+                            "value": "11",
+                            "pct": "0.0024"
                         },
                         {
                             "name": "Western Asia",
-                            "value": 27.0
+                            "value": "27",
+                            "pct": "0.0059"
                         }
                     ]
                 },
@@ -881,11 +1039,13 @@
                     "children": [
                         {
                             "name": "Europe",
-                            "value": 112.0
+                            "value": "112",
+                            "pct": "0.0246"
                         },
                         {
                             "name": "Mediterranean",
-                            "value": 2379.0
+                            "value": "2379",
+                            "pct": "0.5218"
                         }
                     ]
                 }
