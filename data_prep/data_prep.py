@@ -190,12 +190,12 @@ def export_treemap_to_json(data: pd.DataFrame) -> None:
     yearly["year"] = yearly["date"].dt.year
 
     # Group by region and year
-    yearly_grouped = yearly.groupby(["group", "year"])["value"].sum().reset_index()
+    df_yg = yearly.groupby(["group", "year"])["value"].sum().reset_index()
 
-    # Pivot the DataFrame to make "year" as columns
-    df_pivot_by_year = yearly_grouped.pivot(
-        index="group", columns="year", values="value"
-    ).fillna(0)
+    # Calculate percentage of each year's total
+    df_yg["pct"] = round(
+        df_yg["value"] / df_yg.groupby("year")["value"].transform("sum") * 100, 2
+    )
 
     region_mapping = {
         "Africa": [
@@ -226,22 +226,41 @@ def export_treemap_to_json(data: pd.DataFrame) -> None:
 
     output = {"name": "treemap", "children": []}
 
-    for year in df_pivot_by_year.columns:  # Loop over each year in the dataframe
+    # Loop over each year in the dataframe
+    for year in df_yg["year"].unique():
         year_data = {"name": str(year), "children": []}
 
         for region_group, sub_regions in region_mapping.items():
             region_group_data = {"name": region_group, "children": []}
 
             for sub_region in sub_regions:
-                if (
-                    sub_region in df_pivot_by_year.index
-                ):  # Check if the sub_region exists in the dataframe
-                    region_group_data["children"].append(
-                        {
-                            "name": sub_region,
-                            "value": df_pivot_by_year.at[sub_region, year],
-                        }
+                value = "0"
+                pct = "0"
+
+                # Check if the sub_region exists in the dataframe
+                if sub_region in df_yg[df_yg["year"] == year]["group"].values:
+                    value = (
+                        df_yg.loc[
+                            (df_yg["year"] == year) & (df_yg["group"] == sub_region)
+                        ]["value"]
+                        .values[0]
+                        .astype(str)
                     )
+                    pct = (
+                        df_yg.loc[
+                            (df_yg["year"] == year) & (df_yg["group"] == sub_region)
+                        ]["pct"]
+                        .values[0]
+                        .astype(str)
+                    )
+
+                region_group_data["children"].append(
+                    {
+                        "name": sub_region,
+                        "value": value,
+                        "pct": pct,
+                    }
+                )
 
             # If there are any children (regions) added
             if region_group_data["children"]:
