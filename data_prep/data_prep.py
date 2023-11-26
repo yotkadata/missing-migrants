@@ -122,7 +122,8 @@ def export_thresholds_to_json(data: pd.DataFrame) -> None:
     resampled["cumsum"] = resampled.cumsum()
 
     # Find dates where the cumulative sum meets thresholds
-    thresholds = {10000: "", 20000: "", 30000: "", 40000: "", 50000: ""}
+    total = resampled["cumsum"].max()
+    thresholds = {threshold: "" for threshold in range(10000, total + 1, 10000)}
 
     for threshold in thresholds:
         thresholds[threshold] = (
