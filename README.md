@@ -4,7 +4,7 @@
 
 ### Visualizing IOM data on people who went missing or lost their lives during migration
 
-Since 2014, the [**Missing Migrants Project**](https://missingmigrants.iom.int/) of the International Organization for Migration (IOM) has documented more than 59,000 people who died or went missing during migration (as of Oct 30 2023: 59,396). The actual number is likely much higher.
+Since 2014, the [**Missing Migrants Project**](https://missingmigrants.iom.int/) of the International Organization for Migration (IOM) has documented more than 60,000 people who died or went missing during migration (as of Dec 6 2023: 60,496). The actual number is likely much higher.
 
 This repository contains the code for a visualization made with **Svelte** and **d3** of that horrendous number. Each circle in this graph represents one of more than 13,000 incidents from the IOM database where at least one migrant died or went missing. The circle's size indicates the number of people affected. Color and vertical position denote the region of occurrence.
 
@@ -16,7 +16,7 @@ The [Dataset](https://missingmigrants.iom.int/downloads) used for this project i
 
 ### Interactive version
 
-Find an **interactive version** here: https://yotka.org/missing-migrants/
+Find an **interactive and automatically updated** version here: https://yotka.org/missing-migrants/
 (Disclaimer: it probably takes some time to load.)
 
 ### Static version
