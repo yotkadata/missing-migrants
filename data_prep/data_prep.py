@@ -76,7 +76,7 @@ def get_data() -> pd.DataFrame:
     url = get_data_url()
 
     try:
-        return pd.read_csv(url, parse_dates=["Website Date"])
+        return pd.read_csv(url, parse_dates=["Incident Date"])
 
     except ParserError as exception:
         print(f"An error occurred while parsing the CSV: {exception}")
@@ -293,19 +293,19 @@ def export_data_to_json() -> None:
             (
                 "Data retrieved successfully: "
                 f"DataFrame with {num_rows} rows. "
-                f"Last date in dataset: {data_raw['Website Date'].max().strftime('%d-%m-%Y')}"
+                f"Last date in dataset: {data_raw['Incident Date'].max().strftime('%d-%m-%Y')}"
             )
         )
 
         # Define columns to use and rename them
         columns = {
-            "Website Date": "date",
+            "Incident Date": "date",
             "Incident ID": "id",
             "Region of Incident": "group",
             "Total Number of Dead and Missing": "value",
             "Region of Origin": "origin",
-            "Migration route": "route",
-            "Location of death": "location",
+            "Migration Route": "route",
+            "Location of Incident": "location",
             "Information Source": "source",
             "Source Quality": "quality",
             "URL": "url",
@@ -313,7 +313,7 @@ def export_data_to_json() -> None:
         }
 
         # Create new dataframe with selected columns
-        data = data_raw[columns.keys()].dropna(subset=["Website Date"]).copy()
+        data = data_raw[columns.keys()].dropna(subset=["Incident Date"]).copy()
 
         # Rename columns
         data.columns = columns.values()
