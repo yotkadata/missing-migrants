@@ -337,6 +337,17 @@ def export_data_to_json() -> None:
             f"Removed {num_rows - data.shape[0]} rows without date, leaving {data.shape[0]} rows."
         )
 
+        num_rows_left = data.shape[0]
+
+        # Drop rows with value 0
+        # TODO: Investigate what 0 means in the "Total Number of Dead and Missing" column
+        # Before Feb 2024, all values were 1 or higher
+        data = data[data["value"] > 0]
+
+        print(
+            f"Removed {num_rows_left - data.shape[0]} rows with value 0, leaving {data.shape[0]} rows."
+        )
+
         # Make sure data directory exists
         Path("data").mkdir(parents=True, exist_ok=True)
 
