@@ -144,6 +144,46 @@ def export_thresholds_to_json(data: pd.DataFrame) -> None:
     print(f"Data with thresholds exported to {json_file}")
 
 
+def export_daily_to_json(data: pd.DataFrame) -> None:
+    """
+    Function to export the daily totals by region to a JSON file.
+    """
+
+    daily = data[["group", "date", "value"]].copy()
+    daily["year"] = daily["date"].dt.year
+    daily["month"] = daily["date"].dt.month
+    daily["day"] = daily["date"].dt.day
+
+    # Group by region and date
+    daily_grouped = daily.groupby(["group", "date"])["value"].sum().reset_index()
+
+    # Pivot the DataFrame to make "date" as columns
+    df_pivot_by_group = daily_grouped.pivot(
+        index="group", columns="date", values="value"
+    ).fillna(0)
+
+    # Pivot the DataFrame to make "group" as columns
+    df_pivot_by_date = daily_grouped.pivot(
+        index="date", columns="group", values="value"
+    ).fillna(0)
+
+    # Change column dtype to int
+    df_pivot_by_group = df_pivot_by_group.astype(int)
+    df_pivot_by_date = df_pivot_by_date.astype(int)
+
+    # Make sure data directory exists
+    Path("data").mkdir(parents=True, exist_ok=True)
+
+    # Export data to json
+    json_file = "data/data-migration-daily-by-group.json"
+    df_pivot_by_group.to_json(json_file, orient="index")
+    print(f"Data with daily values exported to {json_file}")
+
+    json_file = "data/data-migration-daily-by-date.json"
+    df_pivot_by_date.to_json(json_file, orient="index")
+    print(f"Data with daily values exported to {json_file}")
+
+
 def export_yearly_to_json(data: pd.DataFrame) -> None:
     """
     Function to export the yearly totals by region to a JSON file.
@@ -275,7 +315,7 @@ def export_treemap_to_json(data: pd.DataFrame) -> None:
     # Saving the constructed JSON structure to a file
     json_file = "data/data-migration-treemap.json"
     with open(json_file, "w", encoding="utf-8") as file:
-        json.dump(output, file, indent=4)
+        json.dump(output, file)
     print(f"Data with treemap values exported to {json_file}")
 
 
@@ -324,6 +364,9 @@ def export_data_to_json() -> None:
         # Export thresholds to json
         export_thresholds_to_json(data)
 
+        # Export daily totals to json
+        export_daily_to_json(data)
+
         # Export yearly totals to json
         export_yearly_to_json(data)
 
@@ -345,7 +388,8 @@ def export_data_to_json() -> None:
         data = data[data["value"] > 0]
 
         print(
-            f"Removed {num_rows_left - data.shape[0]} rows with value 0, leaving {data.shape[0]} rows."
+            f"Removed {num_rows_left - data.shape[0]} rows with value 0, "
+            f"leaving {data.shape[0]} rows."
         )
 
         # Make sure data directory exists
