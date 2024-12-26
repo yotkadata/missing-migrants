@@ -18,7 +18,7 @@
       <text
         class="date"
         x={calcVw(3)}
-        y={calcVw(18)}
+        y={calcVw(26)}
         dominant-baseline="hanging">{formatMonth(threshold.date)}</text
       >
       <line x1="0" x2="0" y1="0" y2={calcVw(60)} stroke="#fff" />

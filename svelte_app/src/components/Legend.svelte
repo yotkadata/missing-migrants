@@ -35,7 +35,7 @@
     {#if group !== "Other"}
       <g
         class="legend-item"
-        transform="translate({width + calcVw(20)}, {yScale(group)})"
+        transform="translate({width + calcVw(60)}, {yScale(group)})"
         on:mouseover={() => {
           circleHovered = null;
           legendHovered = group;
@@ -67,7 +67,7 @@
 
 <g
   class="legend-bubble"
-  transform="translate({width + radiusScale(1000) + calcVw(20)}, {calcVw(-25)})"
+  transform="translate({width + radiusScale(1000) + calcVw(60)}, {calcVw(-25)})"
 >
   {#each bubbleLegend as bubble}
     <g class="bubble bubble-{bubble}">

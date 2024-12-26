@@ -46,7 +46,7 @@
         wrap: calcVw(240),
         align: "right",
       },
-      x: xScale(new Date("2024-12-31")) + calcVw(20),
+      x: xScale(new Date("2024-12-31")) + calcVw(60),
       y: yScale("Mediterranean"),
       dx: calcVw(-60),
       dy: yScale("Middle Africa") - yScale("Mediterranean") - calcVw(20),

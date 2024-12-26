@@ -79,7 +79,7 @@
   let { width, height } = getChartDimensions(viewportWidth, viewportHeight);
   $: margin = {
     top: calcVw(150),
-    right: calcVw(200),
+    right: calcVw(280),
     bottom: calcVw(10),
     left: calcVw(10),
   };
@@ -173,7 +173,7 @@
   }
   function getChartDimensions(viewportWidth, viewportHeight) {
     let aspectRatio = 16 / 9;
-    let notSvgHeight = calcVw(270);
+    let notSvgHeight = calcVw(320);
     let height;
     let width = viewportWidth;
     let expectedHeight = width / aspectRatio;
@@ -351,6 +351,7 @@
   }
   h2 {
     font-size: 1.25vw; /* 32px at 2560 */
+    line-height: 1.40625vw; /* 36px at 2560 */
     margin: 0.625vw 0; /* 16px at 2560 */
   }
   .responsive-image {
