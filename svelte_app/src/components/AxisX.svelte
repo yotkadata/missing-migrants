@@ -17,6 +17,7 @@
     <g
       class="tick"
       transform="translate({xScale(tick)}, 0)"
+      role="presentation"
       on:mouseover={() => {
         yearHovered = tick.getFullYear();
         circleHovered = false;

@@ -222,6 +222,7 @@
           showAnnotations = true;
           circleHovered = null;
         }}
+        role="region"
       >
         {#if !chartReady}
           <LoadingIndicator

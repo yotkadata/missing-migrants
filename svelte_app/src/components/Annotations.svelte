@@ -73,6 +73,8 @@
   }
 </script>
 
+<div></div>
+
 <style>
   :global(rect.annotation-note-bg) {
     fill: #333;

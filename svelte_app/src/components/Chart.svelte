@@ -62,6 +62,7 @@
               r={radiusScale(node.value)}
               fill={colorMapping[node.group]}
               stroke={circleHovered === node ? "#fff" : "transparent"}
+              role="img"
               on:mouseover={() => {
                 circleHovered = node;
               }}

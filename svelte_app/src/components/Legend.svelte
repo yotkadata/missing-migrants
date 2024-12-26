@@ -35,7 +35,9 @@
     {#if group !== "Other"}
       <g
         class="legend-item"
+        role="button"
         transform="translate({width + calcVw(60)}, {yScale(group)})"
+        tabindex="0"
         on:mouseover={() => {
           circleHovered = null;
           legendHovered = group;
