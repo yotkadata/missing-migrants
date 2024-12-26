@@ -4,6 +4,7 @@
   import AxisX from "$components/AxisX.svelte";
   import Chart from "$components/Chart.svelte";
   import Legend from "$components/Legend.svelte";
+  import LoadingIndicator from "$components/LoadingIndicator.svelte";
   import Source from "$components/Source.svelte";
   import Thresholds from "$components/Thresholds.svelte";
   import Tooltip from "$components/Tooltip.svelte";
@@ -222,6 +223,14 @@
           circleHovered = null;
         }}
       >
+        {#if !chartReady}
+          <LoadingIndicator
+            colorOuter={colorMapping["North America"]}
+            colorCenter={colorMapping["Mediterranean"]}
+            colorInner={colorMapping["Northern Africa"]}
+            size={calcVw(300)}
+          />
+        {/if}
         <svg {width} {height}>
           <Thresholds
             {thresholds}
@@ -362,5 +371,12 @@
   }
   .static p {
     margin: 0.625vw 0;
+  }
+  .chart-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
   }
 </style>
