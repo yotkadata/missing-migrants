@@ -29,7 +29,7 @@
   let maxDate = new Date();
   let originalMinDate, originalMaxDate;
 
-  const dataIncidents = "data/data-migration-incidents.json";
+  const dataIncidents = "data/data-migration-incidents-precomputed.json";
   const dataTotals = "data/data-migration-totals.json";
   const dataThresholds = "data/data-migration-thresholds.json";
   const dataYearlyByGroup = "data/data-migration-yearly-by-group.json";
@@ -41,8 +41,14 @@
 
   async function loadData() {
     try {
+      // Attempt to fetch precomputed migration incidents data first
+      let incidentsDataUrl = dataIncidents;
+      if (await fileExists("data/data-migration-incidents-precomputed.json")) {
+        incidentsDataUrl = "data/data-migration-incidents-precomputed.json";
+      }
+
       // Fetch migration incidents data
-      data = await fetchData(dataIncidents);
+      data = await fetchData(incidentsDataUrl);
       data.forEach((d) => {
         d.date = new Date(d.date);
       });
@@ -69,6 +75,14 @@
     }
   }
 
+  async function fileExists(url) {
+    try {
+      const response = await fetch(url, { method: "HEAD" }); // Using HEAD to only get headers
+      return response.status === 200;
+    } catch (error) {
+      return false;
+    }
+  }
   async function fetchData(url) {
     const response = await fetch(url);
     return await response.json();
@@ -172,6 +186,9 @@
   function calcVw(value) {
     return value * (viewportWidth / 2560);
   }
+  function calcVh(value) {
+    return value * (viewportHeight / 1440);
+  }
   function getChartDimensions(viewportWidth, viewportHeight) {
     let aspectRatio = 16 / 9;
     let notSvgHeight = calcVw(320);
@@ -182,7 +199,7 @@
 
     if (totalHeight > viewportHeight) {
       height = viewportHeight - notSvgHeight;
-      width = height * aspectRatio;
+      //width = height * aspectRatio;
     } else {
       height = expectedHeight;
     }
@@ -269,6 +286,8 @@
               bind:chartReady
               bind:circleHovered
               {legendHovered}
+              {calcVw}
+              {calcVh}
             />
           </g>
           {#if chartReady}
