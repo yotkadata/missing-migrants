@@ -151,8 +151,7 @@
 
     originalMaxDate = max(data.map((d) => d.date));
     maxDate = new Date(originalMaxDate);
-    maxDate.setMonth(11);
-    maxDate.setDate(31);
+    maxDate.setMonth(maxDate.getMonth() + 1); // Add one month
     maxDate.setHours(0, 0, 0, 0);
   }
 
