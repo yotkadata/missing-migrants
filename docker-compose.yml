@@ -4,12 +4,19 @@ services:
       context: ./data_prep
     volumes:
       - data-volume:/app/data
+
   svelte_app:
     build:
       context: ./svelte_app
     ports:
-      - "8080:80"
+      - "127.0.0.1:8080:80"
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - NET_RAW
     volumes:
-      - data-volume:/usr/share/nginx/html/data
+      - data-volume:/usr/share/nginx/html/data:ro
+
 volumes:
   data-volume:
